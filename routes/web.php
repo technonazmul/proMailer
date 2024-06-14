@@ -28,3 +28,7 @@ Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 // Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/add_data', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+});
+
