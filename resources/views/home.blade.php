@@ -96,7 +96,38 @@ Dashboard
                 </div>
             </div>
         </div>
-        
+        <div class="col-2">
+            <div class="card m-2">
+                <a href="#">
+                    <div class="card-body d-flex align-items-center">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-plus"></i>
+                        </div>
+                        <div>
+                            <h8 class="card-title">Add Company</h8>
+                            
+                        </div>
+                    </div>
+                </a>
+                
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="card m-2">
+                <a href="#">
+                    <div class="card-body d-flex align-items-center">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-plus"></i>
+                        </div>
+                        <div>
+                            <h8 class="card-title">Add Event Type</h8>
+                            
+                        </div>
+                    </div>
+                </a>
+                
+            </div>
+        </div>
         
     </div>
     

@@ -28,7 +28,29 @@ Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 // Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::middleware(['auth'])->group(function () {
-    Route::get('/add_data', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::prefix('admin')->middleware(['auth'])->group(function () {
+    Route::prefix('company_category')->group(function () {
+        Route::get('/add', [App\Http\Controllers\Backend\CompanyCategoryController::class, 'add'])->name('company_category.add');
+        Route::post('/save', [App\Http\Controllers\Backend\CompanyCategoryController::class, 'save'])->name('company_category.save');
+        Route::post('/edit', [App\Http\Controllers\Backend\CompanyCategoryController::class, 'edit'])->name('company_category.edit');
+    });
+
+    Route::prefix('company')->group(function () {
+        Route::get('/add', [App\Http\Controllers\Backend\CompanyController::class, 'add'])->name('company.add');
+        Route::post('/save', [App\Http\Controllers\Backend\CompanyController::class, 'save'])->name('company.save');
+        Route::post('/edit', [App\Http\Controllers\Backend\CompanyController::class, 'edit'])->name('company.edit');
+    });
+    Route::prefix('event')->group(function () {
+        Route::get('/add', [App\Http\Controllers\Backend\EventTypeController::class, 'add'])->name('event.add');
+    });
+    Route::prefix('data')->group(function () {
+        Route::get('/add', [App\Http\Controllers\Backend\DataController::class, 'add'])->name('data.add');
+    });
+    
+   
+    
 });
+
+
+
 
