@@ -32,7 +32,7 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::prefix('company_category')->group(function () {
         Route::get('/add', [App\Http\Controllers\Backend\CompanyCategoryController::class, 'add'])->name('company_category.add');
         Route::post('/save', [App\Http\Controllers\Backend\CompanyCategoryController::class, 'save'])->name('company_category.save');
-        Route::post('/edit', [App\Http\Controllers\Backend\CompanyCategoryController::class, 'edit'])->name('company_category.edit');
+        Route::post('/update/{id}', [App\Http\Controllers\Backend\CompanyCategoryController::class, 'update'])->name('company_category.update');
     });
 
     Route::prefix('company')->group(function () {
