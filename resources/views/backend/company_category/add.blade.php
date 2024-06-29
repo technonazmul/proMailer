@@ -49,7 +49,7 @@ Company Categories
                 
                 &nbsp;
                 &nbsp;
-                <a href="#" class="btn btn-danger">Delete</a>
+                <a href="{{route('company_category.delete', $item->id)}}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item')">Delete</a>
                 
               </td>
             </tr>

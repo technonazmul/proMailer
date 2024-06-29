@@ -27,9 +27,9 @@
                 <h2>Admin Panel</h2>
             </div>
             <ul class="sidebar-menu float-left">
-                <li><a href="#dashboard">Dashboard</a></li>
-                <li><a href="#users">Users</a></li>
-                <li><a href="#settings">Settings</a></li>
+                <li><a href="{{route('home')}}">Dashboard</a></li>
+                <li><a href="{{route('company.add')}}">Companies</a></li>
+                <li><a href="{{route('event.add')}}">Events</a></li>
                 <li><a href="#reports">Reports</a></li>
                 <li><a href="#logout">Logout</a></li>
             </ul>

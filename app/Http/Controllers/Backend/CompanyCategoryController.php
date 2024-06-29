@@ -21,6 +21,7 @@ class CompanyCategoryController extends Controller
         $company_category->name = $request->name;
         $company_category->save();
         echo "success";
+        return back();
     }
     function update(Request $request, $id) {
         $company_category = CompanyCategory::findOrFail($id);
@@ -31,6 +32,14 @@ class CompanyCategoryController extends Controller
         $company_category->name = $request->name;
         $company_category->save();
         echo "success";
+        return back();
+    }
+    function delete($id) {
+        $company_category = CompanyCategory::findOrFail($id);
+        if ($company_category) {
+            $company_category->delete();
+        }
+        return back();
     }
     
 }
