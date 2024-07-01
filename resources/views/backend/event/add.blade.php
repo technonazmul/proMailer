@@ -1,17 +1,17 @@
 @extends('layouts.admin')
 @section('title')
-Company Categories
+Events
 @endsection
 @section('content')
 
 <section class="content">
     <div class="row">
-      <div class="col">
+      <div class="col-md-6 card p-3 ms-2">
         <h3>Add New</h3>
-        <form action="{{route('company_category.save')}}" method="POST">
+        <form action="{{route('event.save')}}" method="POST">
             @csrf
             <div class="mb-3">
-              <label for="name" class="form-label">Category Name</label>
+              <label for="name" class="form-label">Event Name</label>
               <input type="text" class="form-control" id="name" name="name" required>
             </div>
             
@@ -19,10 +19,10 @@ Company Categories
             <button type="submit" class="btn btn-primary">Save</button>
           </form>
       </div>
-      <div class="col">
-        <h3>Categories</h3>
+      <div class="col-12 m-3">
+        <h3>Events</h3>
         @php
-            $company_categories = App\Models\CompanyCategory::orderBy('id', 'asc')->get();
+            $event_types = App\Models\EventType::orderBy('id', 'asc')->get();
             $counter = 1;
         @endphp
         
@@ -32,15 +32,17 @@ Company Categories
             <tr>
               <th scope="col">#</th>
               <th scope="col">Name</th>
+              <th scope="col">ID</th>
               <th scope="col">Action</th>
               
             </tr>
           </thead>
           <tbody>
-            @foreach ($company_categories as $item)
+            @foreach ($event_types as $item)
             <tr>
               <th scope="row">{{$counter}}</th>
               <td>{{$item->name}}</td>
+              <td>{{$item->event_type_id}}</td>
               <td>
                   <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#category_edit{{$item->id}}" aria-expanded="false" aria-controls="category_edit{{$item->id}}">
                     Edit
@@ -49,7 +51,7 @@ Company Categories
                 
                 &nbsp;
                 &nbsp;
-                <a href="{{route('company_category.delete', $item->id)}}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item')">Delete</a>
+                <a href="{{route('event.delete', $item->id)}}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item')">Delete</a>
                 
               </td>
             </tr>
@@ -58,7 +60,7 @@ Company Categories
                 <div class="collapse mt-3" id="category_edit{{$item->id}}">
                   <div class="card card-body">
                     
-                    <form action="{{route('company_category.update', $item->id)}}" method="POST">
+                    <form action="{{route('event.update', $item->id)}}" method="POST">
                         @csrf
                         <div class="mb-3">
                           <label for="name" class="form-label">Category Name</label>

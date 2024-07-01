@@ -95,6 +95,7 @@ Company Management
             <tr>
               <th scope="col">#</th>
               <th scope="col">Name</th>
+              <th scope="col">ID</th>
               <th scope="col">Action</th>
               
             </tr>
@@ -104,6 +105,7 @@ Company Management
             <tr>
               <th scope="row">{{$counter}}</th>
               <td>{{$item->name}}</td>
+              <td>{{$item->company_id}}</td>
               <td>
                  <a href="{{route('company.edit', $item->id)}}" class="btn btn-primary">Edit</a>
 
