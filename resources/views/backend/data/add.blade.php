@@ -17,7 +17,7 @@ Add Data
         </div>
       @endif
 
-    <form action="{{route('company.save')}}" method="POST">
+    <form action="{{route('data.save')}}" method="POST">
       @csrf
       <h3>Add New</h3>
       @php
@@ -35,93 +35,62 @@ Add Data
       </div>
 
         <div class="mb-3">
-          <label for="name" class="form-label">Name</label>
-          <input type="text" class="form-control" id="name" name="name" placeholder="Company Full Name">
+          <label for="first_name" class="form-label">First Name</label>
+          <input type="text" class="form-control" id="first_name" name="first_name">
         </div>
         <div class="mb-3">
-            <label for="phone" class="form-label">Contact Number</label>
-            <input type="text" class="form-control" id="phone" name="phone" placeholder="Contact Number">
-        </div>
-
-        <div class="mb-3">
-            <label for="email" class="form-label">Email Address</label>
-            <input type="mail" class="form-control" id="email" name="email" placeholder="office@example.com">
+            <label for="last_name" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="last_name" name="last_name">
         </div>
 
         <div class="mb-3">
-            <label for="domain" class="form-label">Domain Name</label>
-            <input type="text" class="form-control" id="domain" name="domain" placeholder="example.com">
+            <label for="email" class="form-label">Email</label>
+            <input type="mail" class="form-control" id="email" name="email">
+        </div>
+
+        <div class="mb-3">
+            <label for="phone" class="form-label">Phone Name</label>
+            <input type="text" class="form-control" id="phone" name="phone">
+        </div>
+
+        @php
+            $event_types = App\Models\EventType::orderBy('id', 'asc')->get();
+            $counter = 1;
+        @endphp
+        <div class="mb-3">
+          <label for="event_type" class="form-label">Event Type</label>
+          <select class="form-select" name="event_type">
+            @foreach ($event_types as $item)
+              <option value="{{$item->id}}">{{$item->name}}</option>
+            @endforeach
+            
+          </select>
         </div>
         <div class="mb-3">
-            <label for="address" class="form-label">Address ( Optional )</label>
-            <input type="text" class="form-control" id="address" name="address" placeholder="Company Address">
+            <label for="event_date" class="form-label">Event Date</label>
+            <input type="text" class="form-control" id="event_date" name="event_date" placeholder="DD/MM/YYY">
         </div>
         <div class="mb-3">
-          <label for="mail_sender_name" class="form-label">Mail Sender Full Name</label>
-          <input type="text" class="form-control" id="mail_sender_name" name="mail_sender_name" placeholder="Ex. Sandy Walton">
-      </div>
-        <h3>SMTP INFO</h3>
-        <div class="mb-3">
-          <label for="smtp_username" class="form-label">Username</label>
-          <input type="text" class="form-control" id="smtp_username" name="smtp_username" placeholder="user@example.com">
+            <label for="venue_address" class="form-label">Venue Address</label>
+            <input type="text" class="form-control" id="venue_address" name="venue_address">
         </div>
         <div class="mb-3">
-          <label for="smtp_port" class="form-label">PORT</label>
-          <input type="text" class="form-control" id="smtp_port" name="smtp_port" placeholder="587">
+          <label for="likes_deslikes" class="form-label">Likes and Dislike</label>
+          <textarea class="form-control" id="likes_deslikes" rows="3" name="likes_deslikes"></textarea>
         </div>
+
         <div class="mb-3">
-          <label for="smtp_host" class="form-label">HOST</label>
-          <input type="text" class="form-control" id="smtp_host" name="smtp_host" placeholder="mail.example.com">
+          <label for="notes" class="form-label">Notes</label>
+          <textarea class="form-control" id="notes" rows="3" name="notes"></textarea>
         </div>
-        <div class="mb-3">
-          <label for="smtp_password" class="form-label">Password</label>
-          <input type="text" class="form-control" id="smtp_password" name="smtp_password" placeholder="******">
-        </div>
+        
         
         <button type="submit" class="btn btn-primary">Save</button>
       </form>
     
   </div>
   <div class="col-md-6">
-    <h3>Companies</h3>
-        @php
-            $company = App\Models\Company::orderBy('id', 'asc')->get();
-            $counter = 1;
-        @endphp
-        
-       
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Name</th>
-              <th scope="col">Action</th>
-              
-            </tr>
-          </thead>
-          <tbody>
-            @foreach ($company as $item)
-            <tr>
-              <th scope="row">{{$counter}}</th>
-              <td>{{$item->name}}</td>
-              <td>
-                 <a href="{{route('company.edit', $item->id)}}" class="btn btn-primary">Edit</a>
-
-                
-                &nbsp;
-                &nbsp;
-                <a href="{{route('company.delete', $item->id)}}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item')">Delete</a>
-                
-              </td>
-            </tr>
-            
-            @php
-                $counter++;
-            @endphp
-            @endforeach
-            
-          </tbody>
-        </table>
+    Upload By CSV File
   </div>
     
 </section>
