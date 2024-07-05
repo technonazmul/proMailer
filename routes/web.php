@@ -53,13 +53,17 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::prefix('data')->group(function () {
         Route::get('/add', [App\Http\Controllers\Backend\DataController::class, 'add'])->name('data.add');
         Route::post('/save', [App\Http\Controllers\Backend\DataController::class, 'save'])->name('data.save');
+        //upload by csv
+        Route::post('/csv/upload', [App\Http\Controllers\Backend\DataController::class, 'csvUpload'])->name('data.csv.upload');
+
+
         Route::get('/edit/{id}', [App\Http\Controllers\Backend\DataController::class, 'edit'])->name('data.edit');
         Route::post('/update/{id}', [App\Http\Controllers\Backend\DataController::class, 'update'])->name('data.update');
         Route::get('/delete/{id}', [App\Http\Controllers\Backend\DataController::class, 'delete'])->name('data.delete');
     });
-    
-   
-    
+
+
+
 });
 
 

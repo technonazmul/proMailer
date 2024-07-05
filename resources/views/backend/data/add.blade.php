@@ -90,7 +90,12 @@ Add Data
     
   </div>
   <div class="col-md-6">
-    Upload By CSV File
+    <h3>Upload CSV File</h3>
+    <form action="{{ route('data.csv.upload') }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        <input type="file" name="csv_file" required>
+        <button type="submit" class="btn btn-primary">Upload</button>
+    </form>
   </div>
     
 </section>
