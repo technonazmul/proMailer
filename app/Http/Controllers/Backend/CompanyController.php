@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers\Backend;
+
 use App\Http\Controllers\Controller;
 use App\Models\Company;
 use Illuminate\Support\Str;
@@ -13,10 +14,12 @@ class CompanyController extends Controller
         $this->middleware('auth');
     }
 
-    function add() {
+    function add()
+    {
         return view('backend.company.add');
     }
-    function save(Request $request ) {
+    function save(Request $request)
+    {
         $validated = $request->validate([
             'name' => 'required',
             'phone' => 'required',
@@ -44,19 +47,22 @@ class CompanyController extends Controller
         $company->category_id = $request->category_id;
         $company->save();
         echo "success";
+        return back();
 
     }
-    function edit($id) {
+    function edit($id)
+    {
         $item = Company::findOrFail($id);
         if ($item) {
             return view('backend.company.edit', compact('item'));
-        }else {
+        } else {
             return back();
         }
-        
+
     }
 
-    function update(Request $request, $id ) {
+    function update(Request $request, $id)
+    {
         $validated = $request->validate([
             'name' => 'required',
             'phone' => 'required',
@@ -70,7 +76,7 @@ class CompanyController extends Controller
             'category_id' => 'required',
         ]);
         $company = Company::findOrFail($id);
-        if($company) {
+        if ($company) {
             $company->name = $request->name;
             $company->company_id = Str::slug($company->name, '_');
             $company->phone = $request->phone;
@@ -85,22 +91,23 @@ class CompanyController extends Controller
             $company->category_id = $request->category_id;
             $company->save();
             return back();
-        }else {
+        } else {
             echo "not found";
         }
-       
-        
+
+
 
     }
 
-    function delete($id) {
+    function delete($id)
+    {
         $item = Company::findOrFail($id);
         if ($item) {
             $item->delete();
             return back();
-        }else {
+        } else {
             return back();
         }
-        
+
     }
 }
