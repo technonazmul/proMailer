@@ -26,7 +26,7 @@ class DataController extends Controller
         $data->last_name = $request->last_name;
         $data->email = $request->email;
         $data->phone = $request->phone;
-        $data->event_type = $request->event_type;
+        $data->event_type_id = $request->event_type;
         $data->event_date = $request->event_date;
         $data->venue_address = $request->venue_address;
         $data->likes_deslikes = $request->likes_deslikes;
@@ -45,21 +45,21 @@ class DataController extends Controller
         $header = fgetcsv($file);
 
         while (($row = fgetcsv($file)) !== false) {
-            // $csvdata = array_combine($header, $row);
-            // $data = new Data;
-            // $data->company_id = $request->company_id;
-            // $data->first_name = $request->first_name;
-            // $data->last_name = $request->last_name;
-            // $data->email = $request->email;
-            // $data->phone = $request->phone;
-            // $data->event_type = $request->event_type;
-            // $data->event_date = $request->event_date;
-            // $data->venue_address = $request->venue_address;
-            // $data->likes_deslikes = $request->likes_deslikes;
-            // $data->notes = $request->notes;
-            // $data->save();
-            // echo "sucess";
-            // echo $data['Phone'];
+            $csvdata = array_combine($header, $row);
+            $data = new Data;
+            $data->company_id = $request->company_id;
+            $data->first_name = $request->first_name;
+            $data->last_name = $request->last_name;
+            $data->email = $request->email;
+            $data->phone = $request->phone;
+            $data->event_type = $request->event_type;
+            $data->event_date = $request->event_date;
+            $data->venue_address = $request->venue_address;
+            $data->likes_deslikes = $request->likes_deslikes;
+            $data->notes = $request->notes;
+            $data->save();
+            echo "sucess";
+            echo $csvdata['Phone'];
         }
     }
 

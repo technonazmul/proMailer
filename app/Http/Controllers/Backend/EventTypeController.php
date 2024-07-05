@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\EventType;
 use Illuminate\Support\Str;
+use App\Rules\UniqueSlug;
 
 use Illuminate\Http\Request;
 
@@ -18,6 +19,10 @@ class EventTypeController extends Controller
         return view('backend.event.add');
     }
     function save(Request $request) {
+        $validated = $request->validate([
+            'name' => ['required', 'unique:event_types', new UniqueSlug],
+        ]);
+
         $event_type = new EventType;
         $event_type->name = $request->name;
         $event_type->event_type_id = Str::slug($request->name, '_');

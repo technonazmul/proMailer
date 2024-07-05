@@ -7,6 +7,15 @@ Events
 <section class="content">
     <div class="row">
       <div class="col-md-6 card p-3 ms-2">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <h3>Add New</h3>
         <form action="{{route('event.save')}}" method="POST">
             @csrf
