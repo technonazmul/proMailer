@@ -51,6 +51,7 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
         Route::get('/delete/{id}', [App\Http\Controllers\Backend\EventTypeController::class, 'delete'])->name('event.delete');
     });
     Route::prefix('data')->group(function () {
+        Route::get('/index', [App\Http\Controllers\Backend\DataController::class, 'index'])->name('data.index');
         Route::get('/add', [App\Http\Controllers\Backend\DataController::class, 'add'])->name('data.add');
         Route::post('/save', [App\Http\Controllers\Backend\DataController::class, 'save'])->name('data.save');
         //upload by csv

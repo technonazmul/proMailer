@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Company;
 use App\Models\Data;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
+use Illuminate\Support\Facades\DB;
 
 class DataController extends Controller
 {
@@ -36,6 +39,7 @@ class DataController extends Controller
     }
     function csvUpload(Request $request)
     {
+        DB::beginTransaction();
         // Handle the file upload and processing
         $file = $request->file('csv_file');
         $path = $file->getRealPath();
@@ -48,6 +52,20 @@ class DataController extends Controller
             $csvdata = array_combine($header, $row);
             $data = new Data;
             $data->company_id = $csvdata['companyId'];
+            if($csvdata['companyId']) {
+                $company = Company::where('company_id', $csvdata['companyId'])->first();
+                if ($company) {
+                    $data->company_id = $company->id;
+                }else {
+                    DB::rollBack();
+                    echo "company_id missing to ".$csvdata['email'];
+                    return;
+                }
+            }else {
+                DB::rollBack();
+                echo "company_id missing to ".$csvdata['email'];
+                return;
+            }
             $data->first_name = $csvdata['firstName'];
             $data->email = $csvdata['email'];
             $data->phone = $csvdata['phone'];
@@ -58,8 +76,17 @@ class DataController extends Controller
             $data->likes_deslikes = $csvdata['likes'];
             $data->notes = $csvdata['notes'];
             $data->save();
-            echo "sucess";
+            
         }
+        // Commit the transaction
+        DB::commit();
+        echo "Success";
+        return redirect()->route('data.index');
+    }
+
+    function index() : View {
+        $datas = Data::orderBy('id', 'desc')->get();
+        return view('backend.data.index', compact('datas'));
     }
 
 }
