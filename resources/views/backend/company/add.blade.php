@@ -1,7 +1,5 @@
 @extends('layouts.admin')
-@section('title')
-Company Management
-@endsection
+
 @section('content')
 
 <section class="content">

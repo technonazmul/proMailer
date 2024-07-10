@@ -1,7 +1,5 @@
 @extends('layouts.admin')
-@section('title')
-Events
-@endsection
+
 @section('content')
 
 <section class="content">

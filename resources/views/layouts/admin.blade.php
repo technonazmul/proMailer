@@ -35,9 +35,7 @@
             </ul>
         </aside>
         <main class="main-content">
-            <header class="main-header">
-                <h1>@yield('title')</h1>
-            </header>
+           
             @yield('content')
             
         </main>

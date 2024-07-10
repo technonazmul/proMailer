@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Company;
 use App\Models\Data;
+use App\Models\EventType;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\DB;
@@ -29,13 +30,20 @@ class DataController extends Controller
         $data->last_name = $request->last_name;
         $data->email = $request->email;
         $data->phone = $request->phone;
-        $data->event_type = $request->event_type;
+        $data->event_type_id = $request->event_type;
+        $event = EventType::findOrFail($request->event_type);
+        if($event) {
+            $data->event_type = $event->name;
+        }else {
+            $data->event_type = 'Other';
+        }
         $data->event_date = $request->event_date;
         $data->venue_address = $request->venue_address;
         $data->likes_deslikes = $request->likes_deslikes;
         $data->notes = $request->notes;
         $data->save();
-        echo "sucess";
+        
+        return redirect()->route('data.index');
     }
     function csvUpload(Request $request)
     {
@@ -71,6 +79,14 @@ class DataController extends Controller
             $data->phone = $csvdata['phone'];
             $data->event_type = $csvdata['event'];
             $data->event_type_id = $csvdata['eventId'];
+            if($csvdata['eventId']) {
+                $event = EventType::where('event_type_id', $csvdata['eventId'])->first();
+                if ($event) {
+                    $data->event_type_id = $event->id;
+                }else {
+                    $data->event_type_id = 16;
+                }
+            }
             $data->event_date = $csvdata['date'];
             $data->venue_address = $csvdata['address'];
             $data->likes_deslikes = $csvdata['likes'];
@@ -87,6 +103,35 @@ class DataController extends Controller
     function index() : View {
         $datas = Data::orderBy('id', 'desc')->get();
         return view('backend.data.index', compact('datas'));
+    }
+    function edit($id) : View {
+        $item = Data::findOrFail($id);
+        if ($item) {
+            return view('backend.data.edit', compact('item'));
+        }
+    }
+    function update(Request $request, $id)
+    {
+        $data = Data::findOrFail($id);
+        $data->company_id = $request->company_id;
+        $data->first_name = $request->first_name;
+        $data->last_name = $request->last_name;
+        $data->email = $request->email;
+        $data->phone = $request->phone;
+        $data->event_type_id = $request->event_type;
+        $event = EventType::findOrFail($request->event_type);
+        if($event) {
+            $data->event_type = $event->name;
+        }else {
+            $data->event_type = 'Other';
+        }
+        $data->event_date = $request->event_date;
+        $data->venue_address = $request->venue_address;
+        $data->likes_deslikes = $request->likes_deslikes;
+        $data->notes = $request->notes;
+        $data->save();
+        
+        return back();
     }
 
 }

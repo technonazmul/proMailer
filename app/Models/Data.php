@@ -11,4 +11,7 @@ class Data extends Model
     function company() {
         return $this->belongsTo( Company::class, 'company_id' );
     }
+    function event() {
+        return $this->belongsTo( EventType::class, 'event_type_id' );
+    }
 }

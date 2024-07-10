@@ -1,7 +1,5 @@
 @extends('layouts.admin')
-@section('title')
-Add Data
-@endsection
+
 @section('content')
 
 <section class="content">
@@ -28,7 +26,7 @@ Add Data
         <label for="name" class="form-label">Company</label>
         <select class="form-select" name="company_id">
           @foreach ($company as $item)
-            <option value="{{$item->company_id}}">{{$item->name}}</option>
+            <option value="{{$item->id}}">{{$item->name}}</option>
           @endforeach
           
         </select>

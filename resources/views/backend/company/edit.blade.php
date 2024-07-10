@@ -1,7 +1,5 @@
 @extends('layouts.admin')
-@section('title')
-Edit {{$item->name}}
-@endsection
+
 @section('content')
 
 <section class="content">
