@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 09, 2024 at 04:40 PM
+-- Generation Time: Jul 11, 2024 at 08:43 AM
 -- Server version: 8.2.0
 -- PHP Version: 8.2.13
 
@@ -196,22 +196,23 @@ CREATE TABLE IF NOT EXISTS `data` (
   `likes_deslikes` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `notes` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `campaign_ids` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '1',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `data`
 --
 
-INSERT INTO `data` (`id`, `company_id`, `first_name`, `last_name`, `email`, `phone`, `event_type`, `event_type_id`, `event_date`, `venue_address`, `likes_deslikes`, `notes`, `campaign_ids`, `created_at`, `updated_at`) VALUES
-(14, '32', 'Abbey', NULL, 'abbeysanders002@gmail.com', '07377145236', 'Wedding', 'wedding', '16/08/2025', 'Somersbury Barn Cranleigh', 'I like R&B,I don\'t like R&B,I like Dance music,I don\'t like Rock classics,I don\'t like Latest Rock,I like Motown,I don\'t like 60s,I like 70s,I like 80s,I like 90s,I don\'t like 2000s,I don\'t like Garage,I like Cheesy hits,', 'We are looking at having background music from 2:30pm and then a main DJ set to start at 7:30 pm We would also like our DJ to work alongside a band who will do a maximum of a 2-hour slot after dinner about 5:30 pm. We would like some light up letters and any optional extras like a photobooth if you have one :)', NULL, '2024-07-09 10:40:08', '2024-07-09 10:40:08'),
-(15, '32', 'Emma', NULL, 'Emmatyrrell2022@hotmail.com', '07403285651', 'Wedding', 'wedding', '09/08/25', 'Tyrrells wood', 'I like R&B, I like R&B,I like Dance music,I like Rock classics,I like Latest Rock,I like Motown,I like 60s,I like 70s,I like 80s,I like 90s,I like 2000s,I like Garage,I like Cheesy hits, ( no super cheese )  FAVE: pop ( no michael jasckson ) 100 people, majority family ', '', NULL, '2024-07-09 10:40:08', '2024-07-09 10:40:08'),
-(16, '2', 'Charli Espley', NULL, 'charlotteespley@live.co.uk', '07712443372', '', 'other', '13/07/2023', 'Ewhurst, Surrey', 'I like R&B,I like R&B,I like Dance music,I don\'t like Rock classics,I don\'t like Latest Rock,I don\'t like Motown,I don\'t like 60s,I don\'t like 70s,I don\'t like 80s,I don\'t like 90s,I don\'t like 2000s,I don\'t like Garage,I don\'t like Cheesy hits,', '', NULL, '2024-07-09 10:40:08', '2024-07-09 10:40:08'),
-(17, '27', 'Layla Grant', NULL, 'laylaxanadu@hotmail.co.uk', '07891745107', 'Children Discos (Years 2-9', 'children_discos_years_2_9', '14/07/24', '120a Hartopp Rd, Leicester, LE2 1WR', '', '', NULL, '2024-07-09 10:40:08', '2024-07-09 10:40:08'),
-(18, '14', 'Kelly Wolfe', NULL, 'kellywolfe1995@gmail.com', '07375709044', 'Wedding', 'wedding', '16/11/2024', 'Arbury community centre', '', '', NULL, '2024-07-09 10:40:08', '2024-07-09 10:40:08'),
-(19, '32', 'Lauren Whiteside', NULL, 'lauren@laurenportiaevents.com', '07873134298', 'Wedding', 'wedding', '21/08/2024', 'Hampton Court House', 'I like Chart music,I like Dance music,I like Motown,I like 60s,I like 70s,I like 80s,I like 90s,I like 2000s,Maybe like Lots of cheesy hits,', 'Hi there I am looking for a DJ with Karaoke services for a wedding reception. It will be from 8pm-12am. They don\'t want to have karaoke the entire time but have short intervals and regular party DJ music. Please can you let me know how it works and how many songs etc,', NULL, '2024-07-09 10:40:08', '2024-07-09 10:40:08');
+INSERT INTO `data` (`id`, `company_id`, `first_name`, `last_name`, `email`, `phone`, `event_type`, `event_type_id`, `event_date`, `venue_address`, `likes_deslikes`, `notes`, `campaign_ids`, `status`, `created_at`, `updated_at`) VALUES
+(20, '32', 'Abbey', NULL, 'abbeysanders002@gmail.com', '07377145236', 'Wedding', '1', '16/08/2025', 'Somersbury Barn Cranleigh', 'I like R&B,I don\'t like R&B,I like Dance music,I don\'t like Rock classics,I don\'t like Latest Rock,I like Motown,I don\'t like 60s,I like 70s,I like 80s,I like 90s,I don\'t like 2000s,I don\'t like Garage,I like Cheesy hits,', 'We are looking at having background music from 2:30pm and then a main DJ set to start at 7:30 pm We would also like our DJ to work alongside a band who will do a maximum of a 2-hour slot after dinner about 5:30 pm. We would like some light up letters and any optional extras like a photobooth if you have one :)', NULL, 1, '2024-07-10 10:20:38', '2024-07-10 10:20:38'),
+(21, '32', 'Emma', NULL, 'Emmatyrrell2022@hotmail.com', '07403285651', 'Wedding', '1', '09/08/25', 'Tyrrells wood', 'I like R&B, I like R&B,I like Dance music,I like Rock classics,I like Latest Rock,I like Motown,I like 60s,I like 70s,I like 80s,I like 90s,I like 2000s,I like Garage,I like Cheesy hits, ( no super cheese )  FAVE: pop ( no michael jasckson ) 100 people, majority family ', '', NULL, 1, '2024-07-10 10:20:38', '2024-07-10 10:20:38'),
+(22, '2', 'Charli Espley', NULL, 'charlotteespley@live.co.uk', '07712443372', '', '16', '13/07/2023', 'Ewhurst, Surrey', 'I like R&B,I like R&B,I like Dance music,I don\'t like Rock classics,I don\'t like Latest Rock,I don\'t like Motown,I don\'t like 60s,I don\'t like 70s,I don\'t like 80s,I don\'t like 90s,I don\'t like 2000s,I don\'t like Garage,I don\'t like Cheesy hits,', '', NULL, 1, '2024-07-10 10:20:38', '2024-07-10 10:20:38'),
+(23, '27', 'Layla Grant', NULL, 'laylaxanadu@hotmail.co.uk', '07891745107', 'Children Discos (Years 2-9', '3', '14/07/24', '120a Hartopp Rd, Leicester, LE2 1WR', '', '', NULL, 1, '2024-07-10 10:20:38', '2024-07-10 10:20:38'),
+(24, '14', 'Kelly Wolfe', NULL, 'kellywolfe1995@gmail.com', '07375709044', 'Wedding', '1', '16/11/2024', 'Arbury community centre', '', '', NULL, 1, '2024-07-10 10:20:38', '2024-07-11 01:02:11'),
+(25, '32', 'Lauren', 'Whiteside', 'lauren@laurenportiaevents.com', '07873134298', 'Corporate Event', '2', '21/08/2024', 'Hampton Court House', 'I like Chart music,I like Dance music,I like Motown,I like 60s,I like 70s,I like 80s,I like 90s,I like 2000s,Maybe like Lots of cheesy hits', 'Hi there I am looking for a DJ with Karaoke services for a wedding reception. It will be from 8pm-12am. They don\'t want to have karaoke the entire time but have short intervals and regular party DJ music. Please can you let me know how it works and how many songs etc,', NULL, 1, '2024-07-10 10:20:38', '2024-07-11 01:02:13');
 
 -- --------------------------------------------------------
 
@@ -235,7 +236,7 @@ CREATE TABLE IF NOT EXISTS `event_types` (
 --
 
 INSERT INTO `event_types` (`id`, `created_at`, `updated_at`, `name`, `event_type_id`) VALUES
-(1, '2024-06-30 12:55:51', '2024-06-30 13:08:04', 'Wedding', 'wedding'),
+(1, '2024-06-30 12:55:51', '2024-07-11 00:56:14', 'Wedding', 'wedding'),
 (2, '2024-06-30 12:56:04', '2024-06-30 13:08:16', 'Corporate Event', 'corporate_event'),
 (3, '2024-06-30 13:06:18', '2024-06-30 13:06:18', 'Children Discos (Years 2-9)', 'children_discos_years_2_9'),
 (4, '2024-06-30 13:08:40', '2024-06-30 13:08:40', 'Bar Mitzvah', 'bar_mitzvah'),
@@ -322,7 +323,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -341,7 +342,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (10, '2024_06_30_190403_add_event_type_id_after_name', 4),
 (11, '2024_07_02_093819_add_timestamp_to_data_table', 5),
 (12, '2024_07_05_140059_add_unique_contraint_to_event_type_id_in_event_types', 6),
-(13, '2024_07_08_093754_change_likes_dislikes_in_data_table', 6);
+(13, '2024_07_08_093754_change_likes_dislikes_in_data_table', 6),
+(14, '2024_07_11_054712_add_status_to_data_table', 7),
+(15, '2024_07_11_055112_add_status_to_data_table', 8);
 
 -- --------------------------------------------------------
 
@@ -381,9 +384,7 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('Cl8EcoPR4R1nfGDuntsfTwJXFho0tIpxa0D7Msmf', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoib0hCcmxxelR1ZnBMWEhWRmlyZ1ZOUnQ4N2xsRExDUVE5OE5GcHVRRCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzk6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9jb21wYW55L2FkZCI7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czo0OiJhdXRoIjthOjE6e3M6MjE6InBhc3N3b3JkX2NvbmZpcm1lZF9hdCI7aToxNzIwMzQ1MDQyO319', 1720350369),
-('naOHERpSSXIWW829iVe4sNWjHG7hrPAKIPzphHEU', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiVHkxcERsc0V0Q1RGbFlFVFJsVm9ocWRYM21HNXFSQTN1eEd6b2RxZCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzg6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9kYXRhL2luZGV4Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjQ6ImF1dGgiO2E6MTp7czoyMToicGFzc3dvcmRfY29uZmlybWVkX2F0IjtpOjE3MjA1MzM0NjU7fX0=', 1720535301),
-('SA5zSYqK9peF7GOVFzW8qAdsFU4zSSYg9xJA6ZLb', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiQUNGeUJaUlBWOGpYVU4zUUpScldlbk1qVzJvUXI4WnN3cDQ1MmlLbiI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjM4OiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYWRtaW4vZGF0YS9pbmRleCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czo0OiJhdXRoIjthOjE6e3M6MjE6InBhc3N3b3JkX2NvbmZpcm1lZF9hdCI7aToxNzIwNTQzMDI2O319', 1720543237);
+('Vn1MF1swSrcypzjhF5SllITtl7IuLyxkFXPaLLWI', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiZ1pacDQyNzRYZnkyenpGOTFJWXk2R3hLczh2dG5uU0M1QzdXZE54bSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjM4OiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYWRtaW4vZGF0YS9pbmRleCI7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czo0OiJhdXRoIjthOjE6e3M6MjE6InBhc3N3b3JkX2NvbmZpcm1lZF9hdCI7aToxNzIwNjczMjgyO319', 1720681333);
 
 -- --------------------------------------------------------
 

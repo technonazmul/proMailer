@@ -145,3 +145,4 @@
   });
 </script>
 @endsection
+@include('include.notification')

@@ -98,3 +98,4 @@
     
 </section>
 @endsection
+@include('include.notification')

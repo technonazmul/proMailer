@@ -9,6 +9,7 @@ use App\Models\EventType;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class DataController extends Controller
 {
@@ -42,7 +43,7 @@ class DataController extends Controller
         $data->likes_deslikes = $request->likes_deslikes;
         $data->notes = $request->notes;
         $data->save();
-        
+        Session::flash('message', 'Data Added Successfully'); 
         return redirect()->route('data.index');
     }
     function csvUpload(Request $request)
@@ -96,7 +97,8 @@ class DataController extends Controller
         }
         // Commit the transaction
         DB::commit();
-        echo "Success";
+        
+        Session::flash('message', 'Data Added Successfully'); 
         return redirect()->route('data.index');
     }
 
@@ -107,6 +109,7 @@ class DataController extends Controller
     function edit($id) : View {
         $item = Data::findOrFail($id);
         if ($item) {
+            Session::flash('message', 'Updated successfully'); 
             return view('backend.data.edit', compact('item'));
         }
     }
@@ -130,8 +133,29 @@ class DataController extends Controller
         $data->likes_deslikes = $request->likes_deslikes;
         $data->notes = $request->notes;
         $data->save();
-        
+        Session::flash('message', 'Updated successfully'); 
         return back();
+    }
+    function delete($id) {
+        $data = Data::findOrFail($id);
+        $data->delete();
+        Session::flash('message', 'Deleted successfully'); 
+        return back();
+    }
+    function toggle($id) {
+        $data = Data::findOrFail($id);
+        if($data) {
+            if($data->status == 1) {
+                $data->status = 0;
+            }else {
+                $data->status = 1;
+            }
+            $data->save();
+        }
+        
+        Session::flash('message', 'Status Update.'); 
+        return back();
+        
     }
 
 }

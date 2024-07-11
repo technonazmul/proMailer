@@ -7,6 +7,8 @@ use Illuminate\Support\Str;
 use App\Rules\UniqueSlug;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+
 
 class EventTypeController extends Controller
 {
@@ -27,7 +29,7 @@ class EventTypeController extends Controller
         $event_type->name = $request->name;
         $event_type->event_type_id = Str::slug($request->name, '_');
         $event_type->save();
-        echo "success";
+        Session::flash('message', 'Added Successfully');
         return back();
     }
     function update(Request $request, $id) {
@@ -39,12 +41,13 @@ class EventTypeController extends Controller
         $event_type->name = $request->name;
         $event_type->event_type_id = Str::slug($request->name, '_');
         $event_type->save();
-        echo "success";
+        Session::flash('message', 'Updated Successfully');
         return back();
     }
     function delete($id) {
         $event_type = EventType::findOrFail($id);
         if ($event_type) {
+            Session::flash('message', 'Deleted Successfully');
             $event_type->delete();
         }
         return back();

@@ -6,6 +6,7 @@ use App\Models\Company;
 use Illuminate\Support\Str;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class CompanyController extends Controller
 {
@@ -46,7 +47,7 @@ class CompanyController extends Controller
         $company->smtp_password = $request->smtp_password;
         $company->category_id = $request->category_id;
         $company->save();
-        echo "success";
+        Session::flash('message', 'Added Successfully'); 
         return back();
 
     }
@@ -54,6 +55,7 @@ class CompanyController extends Controller
     {
         $item = Company::findOrFail($id);
         if ($item) {
+            Session::flash('message', 'Edited Successfully');
             return view('backend.company.edit', compact('item'));
         } else {
             return back();
@@ -90,6 +92,7 @@ class CompanyController extends Controller
             $company->smtp_password = $request->smtp_password;
             $company->category_id = $request->category_id;
             $company->save();
+            Session::flash('message', 'Updated Successfully');
             return back();
         } else {
             echo "not found";
@@ -104,6 +107,7 @@ class CompanyController extends Controller
         $item = Company::findOrFail($id);
         if ($item) {
             $item->delete();
+            Session::flash('message', 'Deleted Successfully');
             return back();
         } else {
             return back();

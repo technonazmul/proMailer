@@ -21,11 +21,12 @@
               <th scope="col">Email</th>
               <th scope="col">Phone</th>
               <th scope="col">Event</th>
-              <th scope="col">Event Type</th>
+              <th scope="col">Service Type</th>
               <th scope="col">Date</th>
               <th scope="col">Address</th>
               <th scope="col">Likes</th>
               <th scope="col">Notes</th>
+              <th scope="col">Status</th>
               <th scope="col">Action</th>
               
             </tr>
@@ -41,23 +42,77 @@
               <td>{{$item->event_type}}</td>
               <td>{{$item->event->name}}</td>
               <td>{{$item->event_date}}</td>
-              <td>{{$item->vanue_address}}</td>
-              <td>{{$item->likes_deslikes}}</td>
-              <td>{{$item->notes}}</td>
+              <td>{{$item->venue_address}}</td>
+              <td>
+                @if(!empty($item->likes_deslikes))
+                <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#likes{{$item->id}}">
+                  View
+                </button>
+                @else
+                  No Data
+                @endif
+              </td>
+              <td>
+                @if(!empty($item->notes))
+                <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#note{{$item->id}}">
+                  View
+                </button>
+                @else
+                  No Data
+                @endif
+              </td>
+              <td>
+                @if($item->status === 1)
+                <a href="{{route('data.toggle', $item->id)}}"><i class="fa-solid fa-toggle-on" style="color:green;"></i></a>
+                
+                @else
+                <a href="{{route('data.toggle', $item->id)}}"><i class="fa-solid fa-toggle-off"></i></a>
+                @endif
+                
+                
+              </td>
 
               
 
               <td>
-                 <a href="{{route('data.edit', $item->id)}}" class="btn btn-primary">Edit</a>
+                 <a href="{{route('data.edit', $item->id)}}" class=""><i class="fas fa-edit"></i></a>
 
                 
                 &nbsp;
-                &nbsp;
-                <a href="{{route('data.delete', $item->id)}}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item')">Delete</a>
+                
+                <a href="{{route('data.delete', $item->id)}}" class="" onclick="return confirm('Are you sure you want to delete this item')"><i class="fa fa-trash" aria-hidden="true" style="color: #d9534f;"></i></a>
                 
               </td>
             </tr>
-            
+            <!-- Modal -->
+              <div class="modal fade" id="likes{{$item->id}}" tabindex="-1" aria-labelledby="likes{{$item->id}}Label" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="likes{{$item->id}}Label">Likes/Dislikes</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      {{$item->likes_deslikes}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Modal -->
+              <div class="modal fade" id="note{{$item->id}}" tabindex="-1" aria-labelledby="note{{$item->id}}Label" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="note{{$item->id}}Label">Notes</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      {{$item->notes}}
+                    </div>
+                  </div>
+                </div>
+              </div>
             @php
                 $counter++;
                 
@@ -66,8 +121,11 @@
             
           </tbody>
         </table>
+
   </div>
     
 </section>
 
 @endsection
+
+@include('include.notification')

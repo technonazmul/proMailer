@@ -87,3 +87,4 @@ Company Categories
     
 </section>
 @endsection
+@include('include.notification')

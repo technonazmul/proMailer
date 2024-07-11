@@ -63,6 +63,7 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
         Route::get('/edit/{id}', [App\Http\Controllers\Backend\DataController::class, 'edit'])->name('data.edit');
         Route::post('/update/{id}', [App\Http\Controllers\Backend\DataController::class, 'update'])->name('data.update');
         Route::get('/delete/{id}', [App\Http\Controllers\Backend\DataController::class, 'delete'])->name('data.delete');
+        Route::get('/toggle/{id}', [App\Http\Controllers\Backend\DataController::class, 'toggle'])->name('data.toggle');
     });
 
 
