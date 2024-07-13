@@ -47,7 +47,7 @@ class CompanyController extends Controller
         $company->smtp_password = $request->smtp_password;
         $company->category_id = $request->category_id;
         $company->save();
-        Session::flash('message', 'Added Successfully'); 
+        Session::flash('message', 'Added Successfully');
         return back();
 
     }
@@ -55,7 +55,6 @@ class CompanyController extends Controller
     {
         $item = Company::findOrFail($id);
         if ($item) {
-            Session::flash('message', 'Edited Successfully');
             return view('backend.company.edit', compact('item'));
         } else {
             return back();

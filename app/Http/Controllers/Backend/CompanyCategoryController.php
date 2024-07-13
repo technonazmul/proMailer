@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Backend;
+
 use App\Http\Controllers\Controller;
 use App\Models\CompanyCategory;
 
@@ -15,28 +16,32 @@ class CompanyCategoryController extends Controller
         $this->middleware('auth');
     }
 
-    function add() {
+    function add()
+    {
         return view('backend.company_category.add');
     }
-    function save(Request $request) {
+    function save(Request $request)
+    {
         $company_category = new CompanyCategory;
         $company_category->name = $request->name;
         $company_category->save();
         Session::flash('message', 'Added Successfully');
         return back();
     }
-    function update(Request $request, $id) {
+    function update(Request $request, $id)
+    {
         $company_category = CompanyCategory::findOrFail($id);
-        if( !$company_category ) {
+        if (!$company_category) {
             return back();
         }
-        
+
         $company_category->name = $request->name;
         $company_category->save();
         Session::flash('message', 'Updated Successfully');
         return back();
     }
-    function delete($id) {
+    function delete($id)
+    {
         $company_category = CompanyCategory::findOrFail($id);
         if ($company_category) {
             Session::flash('message', 'Deleted Successfully');
@@ -44,5 +49,5 @@ class CompanyCategoryController extends Controller
         }
         return back();
     }
-    
+
 }

@@ -1,8 +1,10 @@
 @if(Session::has('message'))
 @section('js')
 <script>
-  var message = "{{ Session::get('message') }}";
-  toastr.success(message)
+ $(document).ready(function() {
+                var message = "{{ Session::get('message') }}";
+                toastr.success(message);
+            });
 </script>
 @endsection
 @endif

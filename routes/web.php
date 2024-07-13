@@ -66,6 +66,13 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
         Route::get('/toggle/{id}', [App\Http\Controllers\Backend\DataController::class, 'toggle'])->name('data.toggle');
     });
 
+    Route::prefix('mail')->group(function () {
+        Route::get('/add', [App\Http\Controllers\Backend\EventTypeController::class, 'add'])->name('event.add');
+        Route::post('/save', [App\Http\Controllers\Backend\EventTypeController::class, 'save'])->name('event.save');
+        Route::post('/update/{id}', [App\Http\Controllers\Backend\EventTypeController::class, 'update'])->name('event.update');
+        Route::get('/delete/{id}', [App\Http\Controllers\Backend\EventTypeController::class, 'delete'])->name('event.delete');
+    });
+
 
 
 });

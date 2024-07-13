@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 11, 2024 at 08:43 AM
--- Server version: 8.2.0
--- PHP Version: 8.2.13
+-- Generation Time: Jul 13, 2024 at 06:26 AM
+-- Server version: 8.0.31
+-- PHP Version: 8.0.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -94,16 +94,16 @@ CREATE TABLE IF NOT EXISTS `companies` (
 --
 
 INSERT INTO `companies` (`id`, `name`, `company_id`, `phone`, `email`, `domain`, `address`, `mail_sender_name`, `smtp_username`, `smtp_port`, `smtp_host`, `smtp_password`, `category_id`, `created_at`, `updated_at`) VALUES
-(2, 'Surrey DJ', 'surrey_dj', '+44 1483 362031', 'office@surreydj.co.uk', 'surreydj.co.uk', NULL, 'Sandy Walton', 'office@surreydj.co.uk', '465', 'mail.surreydj.co.uk', 'Opm8akZ2hyjV2$gsL4!wYae3Gdgov9xt', '1', '2024-06-28 12:05:02', '2024-06-29 07:55:56'),
+(2, 'Surrey DJ', 'surrey_dj', '+44 1483 362031', 'office@surreydj.co.uk', 'surreydj.co.uk', NULL, 'Sandy Walton', 'office@surreydj.co.uk', '465', 'mail.surreydj.co.uk', 'Surr3y%ShuvoShuvo1%', '1', '2024-06-28 12:05:02', '2024-07-12 22:25:33'),
 (3, 'Bespoke Wedding DJs - Gloucestershire', 'bespoke_wedding_djs_gloucestershire', '+44 1452 687520', 'office@bespokeweddingdjs.co.uk', 'www.bespokeweddingdjs.co.uk', NULL, 'Sandy Walton', 'office@bespokeweddingdjs.co.uk', '25', 'mail.bespokeweddingdjs.co.uk', 'Surr3y%ShuvoShuvo1%', '1', '2024-07-06 23:08:24', '2024-07-06 23:08:24'),
-(4, 'Buckinghamshire Wedding DJs', 'buckinghamshire_wedding_djs', '+441296847044', 'office@buckinghamshireweddingdjs.co.uk', 'buckinghamshireweddingdjs.co.uk', NULL, 'Sandy Walton', 'office@buckinghamshireweddingdjs.co.uk', '25', 'mail.buckinghamshireweddingdjs.co.uk', 'Surr3y%ShuvoShuvo1%', '1', '2024-07-07 00:45:34', '2024-07-07 00:45:34'),
-(5, 'Buckinghamshire DJs', 'buckinghamshire_djs', '+441296847044', 'office@buckinghamshiredjs.uk', 'buckinghamshiredjs.uk', NULL, 'Sandy Walton', 'office@buckinghamshiredjs.uk', '25', 'mail.buckinghamshiredjs.uk', 'Surr3y%ShuvoShuvo1%', '1', '2024-07-07 00:47:16', '2024-07-07 00:47:16'),
-(6, 'Bedfordshire DJs', 'bedfordshire_djs', '+441234943061', 'office@bedfordshiredjs.uk', 'bedfordshiredjs.uk', NULL, 'Sandy Walton', 'office@bedfordshiredjs.uk', '25', 'mail.bedfordshiredjs.uk', 'Surr3y%ShuvoShuvo1%', '1', '2024-07-07 00:49:30', '2024-07-07 00:49:30'),
-(7, 'Bedfordshire Wedding DJs', 'bedfordshire_wedding_djs', '+441234943061', 'office@bedfordshireweddingdjs.co.uk', 'bedfordshireweddingdjs.co.uk', NULL, 'Sandy Walton', 'office@bedfordshireweddingdjs.co.uk', '25', 'mail.bedfordshireweddingdjs.co.uk', 'Surr3y%ShuvoShuvo1%', '1', '2024-07-07 00:50:21', '2024-07-07 00:50:21'),
-(8, 'Blush Wedding DJs', 'blush_wedding_djs', '+44 1245 921079', 'office@blushweddingdjs.co.uk', 'blushweddingdjs.co.uk', NULL, 'Sandy Walton', 'office@blushweddingdjs.co.uk', '25', 'mail.blushweddingdjs.co.uk', 'Surr3y%ShuvoShuvo1%', '1', '2024-07-07 00:51:11', '2024-07-07 00:51:11'),
-(9, 'Berkshire Wedding DJs', 'berkshire_wedding_djs', '+441183701900', 'office@berkshireweddingdjs.co.uk', 'berkshireweddingdjs.co.uk', NULL, 'Sandy Walton', 'office@berkshireweddingdjs.co.uk', '25', 'mail.berkshireweddingdjs.co.uk', 'Surr3y%ShuvoShuvo1%', '1', '2024-07-07 00:51:59', '2024-07-07 00:51:59'),
+(4, 'Buckinghamshire Wedding DJs', 'buckinghamshire_wedding_djs', '+441296847044', 'office@buckinghamshireweddingdjs.co.uk', 'buckinghamshireweddingdjs.co.uk', NULL, 'Sandy Walton', 'office@buckinghamshireweddingdjs.co.uk', '25', 'mail.buckinghamshireweddingdjs.co.uk', 'U$7%jEp91Vw2Aax#TgtVk621ixagl2%Cu6QIBtg9h@09Re%Siql@', '1', '2024-07-07 00:45:34', '2024-07-12 22:37:38'),
+(5, 'Buckinghamshire DJs', 'buckinghamshire_djs', '+441296847044', 'office@buckinghamshiredjs.uk', 'buckinghamshiredjs.uk', NULL, 'Sandy Walton', 'office@buckinghamshiredjs.uk', '25', 'mail.buckinghamshiredjs.uk', 'U$7%jEp91Vw2Aax#TgtVk621ixagl2%Cu6QIBtg9h@09Re%Siql@', '1', '2024-07-07 00:47:16', '2024-07-12 22:41:31'),
+(6, 'Bedfordshire DJs', 'bedfordshire_djs', '+441234943061', 'office@bedfordshiredjs.uk', 'bedfordshiredjs.uk', NULL, 'Sandy Walton', 'office@bedfordshiredjs.uk', '25', 'mail.bedfordshiredjs.uk', 'U$7%jEp91Vw2Aax#TgtVk621ixagl2%Cu6QIBtg9h@09Re%Siql@', '1', '2024-07-07 00:49:30', '2024-07-12 22:43:49'),
+(7, 'Bedfordshire Wedding DJs', 'bedfordshire_wedding_djs', '+441234943061', 'office@bedfordshireweddingdjs.co.uk', 'bedfordshireweddingdjs.co.uk', NULL, 'Sandy Walton', 'office@bedfordshireweddingdjs.co.uk', '25', 'mail.bedfordshireweddingdjs.co.uk', 'U$7%jEp91Vw2Aax#TgtVk621ixagl2%Cu6QIBtg9h@09Re%Siql@', '1', '2024-07-07 00:50:21', '2024-07-12 22:45:02'),
+(8, 'Blush Wedding DJs', 'blush_wedding_djs', '+44 1245 921079', 'office@blushweddingdjs.co.uk', 'blushweddingdjs.co.uk', NULL, 'Sandy Walton', 'office@blushweddingdjs.co.uk', '25', 'mail.blushweddingdjs.co.uk', 'U$7%jEp91Vw2Aax#TgtVk621ixagl2%Cu6QIBtg9h@09Re%Siql@', '1', '2024-07-07 00:51:11', '2024-07-12 22:57:54'),
+(9, 'Berkshire Wedding DJs', 'berkshire_wedding_djs', '+441183701900', 'office@berkshireweddingdjs.co.uk', 'berkshireweddingdjs.co.uk', NULL, 'Sandy Walton', 'office@berkshireweddingdjs.co.uk', '25', 'mail.berkshireweddingdjs.co.uk', 'U$7%jEp91Vw2Aax#TgtVk621ixagl2%Cu6QIBtg9h@09Re%Siql@', '1', '2024-07-07 00:51:59', '2024-07-12 23:00:59'),
 (10, 'Berkshire DJs', 'berkshire_djs', '0118 3701 900', 'office@berkshire-djs.co.uk', 'berkshire-djs.co.uk', NULL, 'Sandy Walton', 'office@berkshire-djs.co.uk', '25', 'mail.berkshire-djs.co.uk', 'Surr3y%ShuvoShuvo1%', '1', '2024-07-07 00:52:52', '2024-07-07 00:52:52'),
-(11, 'Cornwall DJs', 'cornwall_djs', '+44 1637 808492', 'office@cornwalldjs.uk', 'cornwalldjs.uk', NULL, 'Sandy Walton', 'office@cornwalldjs.uk', '25', 'mail.cornwalldjs.uk', 'Surr3y%ShuvoShuvo1%', '1', '2024-07-07 00:54:16', '2024-07-07 00:54:16'),
+(11, 'Cornwall DJs', 'cornwall_djs', '+44 1637 808492', 'office@cornwalldjs.uk', 'cornwalldjs.uk', NULL, 'Sandy Walton', 'office@cornwalldjs.uk', '25', 'mail.cornwalldjs.uk', 'U$7%jEp91Vw2Aax#TgtVk621ixagl2%Cu6QIBtg9h@09Re%Siql@', '1', '2024-07-07 00:54:16', '2024-07-12 23:17:24'),
 (12, 'Cumbria Wedding DJs', 'cumbria_wedding_djs', '+44 1228 585045', 'office@cumbriaweddingdjs.uk', 'cumbriaweddingdjs.uk', NULL, 'Sandy Walton', 'office@cumbriaweddingdjs.uk', '25', 'mail.cumbriaweddingdjs.uk', 'Surr3y%ShuvoShuvo1%', '1', '2024-07-07 00:55:36', '2024-07-07 00:55:36'),
 (13, 'Cambridgeshire DJs', 'cambridgeshire_djs', '+44 1223 608091', 'office@cambridgeshiredjs.uk', 'cambridgeshiredjs.uk', NULL, 'Sandy Walton', 'office@cambridgeshiredjs.uk', '25', 'mail.cambridgeshiredjs.uk', 'Surr3y%ShuvoShuvo1%', '1', '2024-07-07 00:56:17', '2024-07-07 00:56:17'),
 (14, 'Cambridgeshire Wedding DJs', 'cambridgeshire_wedding_djs', '+44 1223 608091', 'office@cambridgeshireweddingdjs.uk', 'cambridgeshireweddingdjs.uk', NULL, 'Sandy Walton', 'office@cambridgeshireweddingdjs.uk', '25', 'mail.cambridgeshireweddingdjs.uk', 'Surr3y%ShuvoShuvo1%', '1', '2024-07-07 03:40:45', '2024-07-07 03:40:45'),
@@ -193,8 +193,8 @@ CREATE TABLE IF NOT EXISTS `data` (
   `event_type_id` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `event_date` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `venue_address` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `likes_deslikes` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `notes` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `likes_deslikes` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `notes` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `campaign_ids` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '1',
   `created_at` timestamp NULL DEFAULT NULL,
@@ -226,7 +226,7 @@ CREATE TABLE IF NOT EXISTS `event_types` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `name` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `event_type_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `event_type_id` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `event_types_event_type_id_unique` (`event_type_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -384,7 +384,7 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('Vn1MF1swSrcypzjhF5SllITtl7IuLyxkFXPaLLWI', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiZ1pacDQyNzRYZnkyenpGOTFJWXk2R3hLczh2dG5uU0M1QzdXZE54bSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjM4OiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYWRtaW4vZGF0YS9pbmRleCI7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czo0OiJhdXRoIjthOjE6e3M6MjE6InBhc3N3b3JkX2NvbmZpcm1lZF9hdCI7aToxNzIwNjczMjgyO319', 1720681333);
+('MQu7vVbIsvTcgrk675qati5roELHccjdGoWXGMKh', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiSWl4dm43M2JkUWZkYUVzaW1DZEVqa0gyMHpiaTQ3M0FmSFFMS0J3VCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDM6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9jb21wYW55L2VkaXQvMTMiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6NDoiYXV0aCI7YToxOntzOjIxOiJwYXNzd29yZF9jb25maXJtZWRfYXQiO2k6MTcyMDg0NDM4MTt9fQ==', 1720849182);
 
 -- --------------------------------------------------------
 
