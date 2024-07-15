@@ -31,6 +31,7 @@
                 <li><a href="{{route('home')}}">Dashboard</a></li>
                 <li><a href="{{route('company.add')}}">Companies</a></li>
                 <li><a href="{{route('event.add')}}">Events</a></li>
+                <li><a href="{{route('data.index')}}">Datas</a></li>
                 <li><a href="{{route('data.add')}}">Add Data</a></li>
                 <li><a href="#logout">Logout</a></li>
             </ul>
