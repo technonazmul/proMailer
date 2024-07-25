@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('quote_mails', function (Blueprint $table) {
             $table->id();
+            $table->string('company_id')->nullable();
+            $table->string('event_type_id')->nullable();
+            $table->string('mail_template_id')->nullable();
+            $table->string('user_id')->nullable();
             $table->timestamps();
         });
     }

@@ -22,9 +22,12 @@ return new class extends Migration
             $table->string('event_type_id')->nullable();
             $table->string('event_date')->nullable();
             $table->string('venue_address')->nullable();
-            $table->string('likes_deslikes')->nullable();
+            $table->text('likes_deslikes')->nullable();
             $table->string('notes')->nullable();
             $table->string('campaign_ids')->nullable();
+            $table->boolean('status')->default(1);
+            $table->string('user_id')->nullable();
+            $table->timestamps();
         });
     }
 

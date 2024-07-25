@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('smtp_host')->nullable();
             $table->string('smtp_password')->nullable();
             $table->string('category_id')->nullable();
+            $table->string('user_id')->nullable();
             $table->timestamps();
         }); 
     }

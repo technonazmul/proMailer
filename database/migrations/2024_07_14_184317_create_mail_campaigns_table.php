@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('mail_campaigns', function (Blueprint $table) {
             $table->id();
+            $table->string('title')->nullable();
+            $table->string('time_gap')->nullable();
+            $table->string('mail_template_id')->nullable();
+            $table->string('user_id')->nullable();
             $table->timestamps();
         });
     }

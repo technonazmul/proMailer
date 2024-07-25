@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string("name")->nullable();
             $table->text("template")->nullable();
+            $table->string('user_id')->nullable();
             $table->timestamps();
         });
     }

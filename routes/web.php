@@ -66,11 +66,20 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
         Route::get('/toggle/{id}', [App\Http\Controllers\Backend\DataController::class, 'toggle'])->name('data.toggle');
     });
 
-    Route::prefix('mail')->group(function () {
-        Route::get('/add', [App\Http\Controllers\Backend\EventTypeController::class, 'add'])->name('event.add');
-        Route::post('/save', [App\Http\Controllers\Backend\EventTypeController::class, 'save'])->name('event.save');
-        Route::post('/update/{id}', [App\Http\Controllers\Backend\EventTypeController::class, 'update'])->name('event.update');
-        Route::get('/delete/{id}', [App\Http\Controllers\Backend\EventTypeController::class, 'delete'])->name('event.delete');
+    Route::prefix('mailtemplate')->group(function () {
+        Route::get('/add', [App\Http\Controllers\Backend\MailTemplateController::class, 'add'])->name('mailtemplate.add');
+        Route::post('/save', [App\Http\Controllers\Backend\MailTemplateController::class, 'save'])->name('mailtemplate.save');
+        Route::get('/edit/{id}', [App\Http\Controllers\Backend\MailTemplateController::class, 'edit'])->name('mailtemplate.edit');
+        Route::post('/update/{id}', [App\Http\Controllers\Backend\MailTemplateController::class, 'update'])->name('mailtemplate.update');
+        Route::get('/delete/{id}', [App\Http\Controllers\Backend\MailTemplateController::class, 'delete'])->name('mailtemplate.delete');
+    });
+
+    Route::prefix('welcomemail')->group(function () {
+        Route::get('/add', [App\Http\Controllers\Backend\WelcomeMailController::class, 'add'])->name('welcomemail.add');
+        Route::post('/save', [App\Http\Controllers\Backend\WelcomeMailController::class, 'save'])->name('welcomemail.save');
+        Route::get('/edit/{id}', [App\Http\Controllers\Backend\WelcomeMailController::class, 'edit'])->name('welcomemail.edit');
+        Route::post('/update/{id}', [App\Http\Controllers\Backend\WelcomeMailController::class, 'update'])->name('welcomemail.update');
+        Route::get('/delete/{id}', [App\Http\Controllers\Backend\WelcomeMailController::class, 'delete'])->name('welcomemail.delete');
     });
 
 
