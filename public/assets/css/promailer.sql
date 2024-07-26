@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 25, 2024 at 01:25 PM
+-- Generation Time: Jul 26, 2024 at 05:19 AM
 -- Server version: 8.2.0
 -- PHP Version: 8.2.13
 
@@ -216,7 +216,7 @@ CREATE TABLE IF NOT EXISTS `event_types` (
   `event_type_id` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `event_types_event_type_id_unique` (`event_type_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `event_types`
@@ -237,7 +237,8 @@ INSERT INTO `event_types` (`id`, `created_at`, `updated_at`, `name`, `event_type
 (12, '2024-06-30 13:09:51', '2024-06-30 13:09:51', '60th Birthday', '60th_birthday'),
 (13, '2024-06-30 13:09:56', '2024-06-30 13:09:56', '70th Birthday', '70th_birthday'),
 (14, '2024-06-30 13:10:02', '2024-06-30 13:10:02', '80th Birthday', '80th_birthday'),
-(16, '2024-06-30 13:12:55', '2024-06-30 13:12:55', 'Other', 'other');
+(16, '2024-06-30 13:12:55', '2024-06-30 13:12:55', 'Other', 'other'),
+(17, '2024-07-25 23:08:47', '2024-07-25 23:08:47', '10 + Year', '10_year');
 
 -- --------------------------------------------------------
 
@@ -343,19 +344,23 @@ DROP TABLE IF EXISTS `mail_templates`;
 CREATE TABLE IF NOT EXISTS `mail_templates` (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `subject` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `template` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `mail_templates`
 --
 
-INSERT INTO `mail_templates` (`id`, `name`, `template`, `created_at`, `updated_at`) VALUES
-(1, 'PreQuote', 'Hi [customer_first_name],\nThanks for contacting,\nWe\'ll get back to you asap.\nThanks and Regards\n[admin_name]\n[company_name]\n[company_phone]\n[company_mail]', '2024-07-22 04:08:19', '2024-07-22 04:08:19'),
-(2, 'PreQuoteWedding', 'Hi [customer_first_name],\r\nCongratulation for you forthcoming wedding,\r\nWe\'ll get back to you asap.\r\nThanks and Regards\r\n[admin_name]\r\n[company_name]\r\n[company_phone]\r\n[company_mail]', '2024-07-22 04:11:18', '2024-07-22 04:11:18');
+INSERT INTO `mail_templates` (`id`, `name`, `subject`, `template`, `created_at`, `updated_at`) VALUES
+(1, 'PreQuote', '[customer_first_name]\'s DJ Quote', 'Hi [customer_first_name], \r\nIt\'s great to hear from you, I am sure you are very excited about your party.\r\nAs a privately owned company that deeply care about your event we have taken the time to source the absolute best DJs, Mark and Adam have seen hundreds of DJs perform over the last 12 years we have been in business only choosing the best to represent us.  Our DJs know how to create an amazing atmosphere, read the crowd and how to keep all ages completely happy. They also use state of the art equipment as it all adds to the atmosphere on the night. \r\nFor us its all about creating the best night possible for you, your friends and family and can also assure you our DJs are reliable as all our DJs have worked with us for years.\r\nYou will also be very surprised at our rates not only have we choose the best DJs but the DJs that are very reasonably priced as well and also different price options to cater to different budgets.\r\nAdam will try and call to discuss as every DJ does a different style it is important to ensure the DJ is best suited to what you are looking for, we can also then send you the videos or audios of the particular DJs that best suit your event, we do also have a number of price ranges for the different levels of DJs and equipment so they can explain the differences over a quick 5 minute telephone call.\r\nDid you also see the videos of our DJs on our website by the way?\r\nWe have a great deal of videos which are not on our website as well where you can hear the audios of the DJs sets, we can also send these videos after determining the style you are looking for. \r\n\r\n[admin_name]\r\n[company_name]\r\n[company_phone]\r\n[company_mail]', '2024-07-22 04:08:19', '2024-07-25 18:19:37'),
+(2, 'PreQuoteWedding', '[customer_first_name]\'s Wedding DJ', 'Hi [customer_first_name],\r\nCongratulation for you forthcoming wedding,\r\nWe\'ll get back to you asap.\r\nThanks and Regards\r\n[admin_name]\r\n[company_name]\r\n[company_phone]\r\n[company_mail]', '2024-07-22 04:11:18', '2024-07-25 18:45:56'),
+(3, '18th Birthday White Area', '[customer_first_name]\'s DJ Quote - 18th Birthday', 'Hi [customer_first_name], \r\nWe totally understand how important your 18th Birthday is and I can assure you that our top quality service will match your expectations.\r\nOver the last 12 years we have been in business we have built a team of the absolute best DJs and take strict measures to ensure they are the best. Mark and Adam will always see DJs perform live before they bring them on board with us so we can 100% guarantee outstanding quality along with 100% reliability as all our DJs have worked for us for years.\r\nWe will provide a young and energetic DJ that can provide a club like experience with all your favourites. If its a mixture of both our DJs get the balance just right for both the 18 year olds and family members.\r\nYou will also be very surprised at our rates not only have we managed to source the best DJs but at very reasonable rates (based on 4.5 hours):\r\nOur gold level DJs are: £340 (Possible 10 to 20% off for a limited period only) These DJs are the absolute best in the industury and are the top 10% of DJs (on average 1 in 10 DJs we see get though to meet these high standards) they also use the highest standard of equipment. \r\nSilver level DJs: £270  Even at this lower cost, as mentioned our DJs have worked with us for years and tested on performance you can always be assured your DJ will be to a high standard, experienced, well equipped, friendly and professional which is a list of the few attributes we make sure all our DJs have. These DJs are in the top 20% in the industury (on average 1 in 5 DJs get through to meet these standards) \r\nBronze level DJs: £200 These DJ’s are still fantastic for the rate and are still great at getting a crowd on the dance floor, they tend to use slightly less equipment so are best suited for small venues and house parties. (We only have limited DJs at this rate)', '2024-07-25 18:21:33', '2024-07-25 18:21:33'),
+(4, '18th Birthday Blue Area', '[customer_first_name]\'s DJ Quote - 18th Birthday', 'Hi [customer_first_name], \r\nWe totally understand how important your 18th Birthday is and I can assure you that our top quality service will match your expectations.\r\nOver the last 12 years we have been in business we have built a team of the absolute best DJs and take strict measures to ensure they are the best. Mark and Adam  always see DJs perform live before we bring them on board with us so we can 100% guarantee outstanding quality along with 100% reliability as all our DJs have worked for us for years.\r\nCan I ask if your party is more for friends or a mixture of both friends and family?\r\nIf its more for friends we will provide a young and energetic DJ that can provide a club like experience with all your favourites. If its a mixture of both our DJs get the balance just right for both the 18 year olds and family members.\r\nYou will also be very surprised at our rates (based on 4.5 hours):\r\nOur gold level DJs are: £320 (£256 with 20% discount for a limited period only) These DJs are the absolute best in the industury and are the top 10% of DJs (on average 1 in 10 DJs we see get though to meet these high standards) they also use the highest standard of equipment. \r\nSilver level DJs:£240  Even at this lower cost, as mentioned our DJs have worked with us for years and tested on performance you can always be assured your DJ will be to a high standard, experienced, well equipped, friendly and professional which is a list of the few attributes we make sure all our DJs have. These DJs are in the top 20% in the industury (on average 1 in 5 DJs get through to meet these standards) \r\nBronze level DJs: £160 These DJ’s are still fantastic for the rate and are still great at getting a crowd on the dance floor, they tend to use slightly less equipment so are best suited for small venues and house parties. (We only have limited DJs at this rate)', '2024-07-25 18:22:13', '2024-07-25 18:22:13'),
+(5, 'white10 +', '[customer_first_name]\'s DJ Quote', 'Hi [customer_first_name], \r\nThank you showing an interest in our service, \r\nJust to let you know we go the extra mile to make sure our parties are the best around. Our DJs are fun, friendly and full of energy! They provide a 100% cool disco, they can simply play music, provide interaction and encouragement or can even include a combination of games and competitions that best suit the age of the kids. \r\nOver the last 12 years we have been in business we have built a team of the absolute best DJs and take strict measures to ensure they are the best. Mark and Adam will always see DJs perform live before they bring them on board with us so we can 100% guarantee outstanding quality along with reliability as all our DJs have worked for us for years.\r\nWhat also makes our DJs different from the rest is that they aren’t just DJs that play music alone they are entertainers and some are professional dancers too, the DJs that are professional dancers can demonstrate their awesome dance moves with the kids and play party games for non-stop fun! They also have all the latest music that all the kids like and you can also provide your child’s favourite songs for them to play on the day.\r\nFor a DJ booking (2 hours):\r\nOur silver level DJs are: £250 (£200 with 20% off for a limited period only) These DJs are the absolute best in the industury and are the top 10% of DJs (on average 1 in 10 DJs we see get though to meet these high standards) \r\nBronze level DJs: £180 These DJ’s are still great for the rate and will still provide party games and interaction. (We only have limited DJs at this rate) \r\nFridays and Saturdays after 5pm are peak times:\r\nGold level DJs: £300  (£240 with 20% off for a limited period only)\r\nDJs that aren’t part of our main team: £220', '2024-07-25 18:23:02', '2024-07-25 18:23:02');
 
 -- --------------------------------------------------------
 
@@ -369,7 +374,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -387,7 +392,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (9, '2024_07_14_184135_create_quote_mails_table', 1),
 (10, '2024_07_14_184148_create_follow_up_mails_table', 1),
 (11, '2024_07_14_184317_create_mail_campaigns_table', 1),
-(12, '2024_07_14_194123_create_mail_templates_table', 1);
+(12, '2024_07_14_194123_create_mail_templates_table', 1),
+(13, '2024_07_26_001616_add_subject_to_mail_templates_table', 2);
 
 -- --------------------------------------------------------
 
@@ -419,7 +425,15 @@ CREATE TABLE IF NOT EXISTS `quote_mails` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `quote_mails`
+--
+
+INSERT INTO `quote_mails` (`id`, `company_id`, `event_type_id`, `mail_template_id`, `user_id`, `created_at`, `updated_at`) VALUES
+(1, '2', '17', '5', NULL, '2024-07-25 23:18:28', '2024-07-25 23:18:49'),
+(2, '2', '7', '3', NULL, '2024-07-25 23:18:54', '2024-07-25 23:18:54');
 
 -- --------------------------------------------------------
 
@@ -445,7 +459,7 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('KCTjuZxF32zGLDUMLTtyCGvZ0zsQNg0G2DBREbZW', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoic2JVbWlnczZGbG94Wk5KU2twT3hMVzNDSm8xVUhhMjFyU2pPdEZpOSI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjQ2OiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYWRtaW4vd2VsY29tZW1haWwvZWRpdC8yIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjQ6ImF1dGgiO2E6MTp7czoyMToicGFzc3dvcmRfY29uZmlybWVkX2F0IjtpOjE3MjE2NDUzNjM7fX0=', 1721645832);
+('lo6yDatropDHXFPvC3s2EBnvsbFwZX0a1emgdV2f', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiM3B1ZlFIamNmRE5XZUFHVmVlTzRNT3FTbWx4UGZ2bzlTRWc0dnNHWCI7czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjk6Il9wcmV2aW91cyI7YToxOntzOjM6InVybCI7czo0NDoiaHR0cDovLzEyNy4wLjAuMTo4MDAwL2FkbWluL3F1b3RlbWFpbC9lZGl0LzIiO319', 1721971136);
 
 -- --------------------------------------------------------
 
@@ -472,7 +486,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'admin@gmail.com', NULL, '$2y$12$GEyF/MuM7pRVG38IykTPx.YyEPdVYKWccBzkfG.OaUi2plJW8hKZi', NULL, '2024-06-09 04:58:01', '2024-06-09 04:58:01');
+(1, 'Admin', 'admin@gmail.com', NULL, '$2y$12$GEyF/MuM7pRVG38IykTPx.YyEPdVYKWccBzkfG.OaUi2plJW8hKZi', 'uQSUvdRtq4MNWtSAmyQl07KM7bxrYKfQxLYdQjCvx16DgO68wj0QsU1IPbk4', '2024-06-09 04:58:01', '2024-06-09 04:58:01');
 
 -- --------------------------------------------------------
 
@@ -490,7 +504,21 @@ CREATE TABLE IF NOT EXISTS `welcome_mails` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `welcome_mails`
+--
+
+INSERT INTO `welcome_mails` (`id`, `company_id`, `event_type_id`, `mail_template_id`, `user_id`, `created_at`, `updated_at`) VALUES
+(20, '2', '11', '1', NULL, '2024-07-25 23:18:15', '2024-07-25 23:18:15'),
+(19, '2', '10', '1', NULL, '2024-07-25 23:18:11', '2024-07-25 23:18:11'),
+(18, '2', '9', '1', NULL, '2024-07-25 23:18:08', '2024-07-25 23:18:08'),
+(17, '2', '8', '1', NULL, '2024-07-25 23:18:05', '2024-07-25 23:18:05'),
+(16, '2', '6', '1', NULL, '2024-07-25 23:18:00', '2024-07-25 23:18:00'),
+(15, '2', '5', '1', NULL, '2024-07-25 23:17:57', '2024-07-25 23:17:57'),
+(14, '2', '17', '1', NULL, '2024-07-25 23:09:12', '2024-07-25 23:17:54'),
+(13, '2', '7', '1', NULL, '2024-07-25 23:05:18', '2024-07-25 23:18:03');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

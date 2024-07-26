@@ -14,6 +14,10 @@
               <input type="text" class="form-control" id="name" name="name" placeholder="Template Name" value="{{$item->name}}">
             </div>
             <div class="mb-3">
+              <label for="subject" class="form-label">Subject</label>
+              <input type="text" class="form-control" id="subject" name="subject" placeholder="Mail Subject" value="{{$item->subject}}">
+            </div>
+            <div class="mb-3">
               <label for="name" class="form-label">Template</label>
               <textarea name="template" id="" cols="30" rows="10" class="form-control">{{$item->template}}</textarea>
             </div>

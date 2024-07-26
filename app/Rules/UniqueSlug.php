@@ -19,7 +19,7 @@ class UniqueSlug implements ValidationRule
         $slug = Str::slug($value, '_');
 
         // Check if slug is unique in the event_types table
-        if(!EventType::where('event_type_id', $slug)->exists()) {
+        if(EventType::where('event_type_id', $slug)->exists()) {
             $fail('The Event Type Should Be unique.');
         }
     }

@@ -78,8 +78,16 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
         Route::get('/add', [App\Http\Controllers\Backend\WelcomeMailController::class, 'add'])->name('welcomemail.add');
         Route::post('/save', [App\Http\Controllers\Backend\WelcomeMailController::class, 'save'])->name('welcomemail.save');
         Route::get('/edit/{id}', [App\Http\Controllers\Backend\WelcomeMailController::class, 'edit'])->name('welcomemail.edit');
-        Route::post('/update/{id}', [App\Http\Controllers\Backend\WelcomeMailController::class, 'update'])->name('welcomemail.update');
+        Route::post('/update', [App\Http\Controllers\Backend\WelcomeMailController::class, 'update'])->name('welcomemail.update');
         Route::get('/delete/{id}', [App\Http\Controllers\Backend\WelcomeMailController::class, 'delete'])->name('welcomemail.delete');
+    });
+
+    Route::prefix('quotemail')->group(function () {
+        Route::get('/add', [App\Http\Controllers\Backend\QuoteMailController::class, 'add'])->name('quotemail.add');
+        Route::post('/save', [App\Http\Controllers\Backend\QuoteMailController::class, 'save'])->name('quotemail.save');
+        Route::get('/edit/{id}', [App\Http\Controllers\Backend\QuoteMailController::class, 'edit'])->name('quotemail.edit');
+        Route::post('/update', [App\Http\Controllers\Backend\QuoteMailController::class, 'update'])->name('quotemail.update');
+        Route::get('/delete/{id}', [App\Http\Controllers\Backend\QuoteMailController::class, 'delete'])->name('welcomemail.delete');
     });
 
 

@@ -1,3 +1,6 @@
+@php
+    use Illuminate\Support\Str;
+@endphp
 @extends('layouts.admin')
 
 @section('content')
@@ -27,6 +30,10 @@
               <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
                 <input type="text" class="form-control" id="name" name="name" placeholder="Template Name">
+              </div>
+              <div class="mb-3">
+                <label for="subject" class="form-label">Subject</label>
+                <input type="text" class="form-control" id="subject" name="subject" placeholder="Mail Subject">
               </div>
               <div class="mb-3">
                 <label for="name" class="form-label">Template</label>
@@ -64,6 +71,7 @@
             <tr>
               <th scope="col">#</th>
               <th scope="col">Name</th>
+              <th scope="col">Subject</th>
               <th scope="col">Template</th>
               <th scope="col">Action</th>
               
@@ -74,7 +82,8 @@
             <tr>
               <th scope="row">{{$counter}}</th>
               <td>{{$item->name}}</td>
-              <td>{{$item->template}}</td>
+              <td>{{$item->subject}}</td>
+              <td>{{ Str::limit($item->template, 100, '...') }}</td>
               <td>
                  <a href="{{route('mailtemplate.edit', $item->id)}}" class="btn btn-primary">Edit</a>
 

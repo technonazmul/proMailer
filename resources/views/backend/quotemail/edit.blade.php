@@ -24,12 +24,12 @@
             
               @foreach ($eventTypes as $item)
                     @php
-                        $welcomemail = App\Models\WelcomeMail::where('company_id', $company->id)->where('event_type_id', $item->id)->first();
+                        $quotemail = App\Models\Quotemail::where('company_id', $company->id)->where('event_type_id', $item->id)->first();
                     @endphp
               <tr>
               <td>{{$counter}}</td>
               <td>{{$item->name}}</td>
-              <form action="{{route('welcomemail.update')}}" method="POST">
+              <form action="{{route('quotemail.update')}}" method="POST">
                 @csrf
                 <td>
                   
@@ -37,8 +37,8 @@
                     <option selected>Select Template</option>
                   @foreach ($mailtemplates as $template)
                     
-                    @if ($welcomemail)
-                      <option value="{{$template->id}}" @if($welcomemail->mail_template_id == $template->id) selected @endif>{{$template->name}}</option>
+                    @if ($quotemail)
+                      <option value="{{$template->id}}" @if($quotemail->mail_template_id == $template->id) selected @endif>{{$template->name}}</option>
                     @else
                       <option value="{{$template->id}}">{{$template->name}}</option>
                     @endif
