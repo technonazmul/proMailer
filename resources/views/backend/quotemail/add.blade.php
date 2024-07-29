@@ -5,7 +5,7 @@
 <section class="content">
   
   <div class="col-md-12">
-    <h3>Assign Welcome Mail</h3>
+    <h3>Assign Quote Mail</h3>
         @php
             $company = App\Models\Company::orderBy('id', 'asc')->get();
             $counter = 1;

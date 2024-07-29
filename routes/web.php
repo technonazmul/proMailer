@@ -90,6 +90,14 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
         Route::get('/delete/{id}', [App\Http\Controllers\Backend\QuoteMailController::class, 'delete'])->name('welcomemail.delete');
     });
 
+    Route::prefix('followupmail')->group(function () {
+        Route::get('/add', [App\Http\Controllers\Backend\FollowUpMailController::class, 'add'])->name('followupmail.add');
+        Route::post('/save', [App\Http\Controllers\Backend\FollowUpMailController::class, 'save'])->name('followupmail.save');
+        Route::get('/edit/{id}', [App\Http\Controllers\Backend\FollowUpMailController::class, 'edit'])->name('followupmail.edit');
+        Route::post('/update', [App\Http\Controllers\Backend\FollowUpMailController::class, 'update'])->name('followupmail.update');
+        Route::get('/delete/{id}', [App\Http\Controllers\Backend\FollowUpMailController::class, 'delete'])->name('followupmail.delete');
+    });
+
 
 
 });

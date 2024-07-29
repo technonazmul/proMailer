@@ -37,7 +37,7 @@
                 <li><a href="{{route('data.add')}}">Add Data</a></li>
                 <li><a href="{{route('welcomemail.add')}}">Welcome Mail</a></li>
                 <li><a href="{{route('quotemail.add')}}">Quote Mail</a></li>
-                <li><a href="{{route('welcomemail.add')}}">Followup Mail</a></li>
+                <li><a href="{{route('followupmail.add')}}">Followup Mail</a></li>
                 <li><a href="{{route('mailtemplate.add')}}">Mail Templates</a></li>
                 <li><a href="#logout">Logout</a></li>
             </ul>
