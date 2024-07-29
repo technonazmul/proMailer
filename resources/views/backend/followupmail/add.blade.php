@@ -35,12 +35,18 @@
                 <label for="time_gap" class="form-label">Follow UP Will Send After</label>
                 <input type="number" min="1" class="form-control" id="time_gap" name="time_gap" placeholder="Days">
               </div>
+              
+              <div  class="mb-3">
+                <label for="time_gap" class="form-label">Select template</label>
               <select class="form-select" aria-label="Default select example">
-                <option selected>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                
+                @foreach ($templates as $template)
+                  <option value="{{$template->id}}">{{$template->name}}</option>
+                @endforeach
+                
+                
               </select>
+            </div>
               
               <button type="submit" class="btn btn-primary">Save</button>
             </form>
@@ -50,7 +56,7 @@
     
   </div>
 
-  <div class="col-md-12">
+  <div class="col-md-12 mt-5">
     <h3>Follow Up Mails</h3>
         @php
             $counter = 1;
