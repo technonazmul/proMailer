@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class MailTemplateController extends Controller
 {
     function add() {
-        $items = MailTemplate::orderBy('name', 'asc')->get();
+        $items = MailTemplate::orderBy('id', 'desc')->get();
         
         return view('backend.mailtemplate.add', compact('items'));
     }

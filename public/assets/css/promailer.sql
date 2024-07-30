@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 26, 2024 at 05:19 AM
+-- Generation Time: Jul 30, 2024 at 02:19 PM
 -- Server version: 8.2.0
 -- PHP Version: 8.2.13
 
@@ -270,11 +270,19 @@ CREATE TABLE IF NOT EXISTS `follow_up_mails` (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
   `title` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `time_gap` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `event_type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `mail_template_id` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `follow_up_mails`
+--
+
+INSERT INTO `follow_up_mails` (`id`, `title`, `time_gap`, `event_type`, `mail_template_id`, `created_at`, `updated_at`) VALUES
+(1, '2 weeks after enquiry for wedding event', '14', 'wedding', '6', '2024-07-30 07:40:03', '2024-07-30 08:05:58');
 
 -- --------------------------------------------------------
 
@@ -349,7 +357,7 @@ CREATE TABLE IF NOT EXISTS `mail_templates` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `mail_templates`
@@ -360,7 +368,15 @@ INSERT INTO `mail_templates` (`id`, `name`, `subject`, `template`, `created_at`,
 (2, 'PreQuoteWedding', '[customer_first_name]\'s Wedding DJ', 'Hi [customer_first_name],\r\nCongratulation for you forthcoming wedding,\r\nWe\'ll get back to you asap.\r\nThanks and Regards\r\n[admin_name]\r\n[company_name]\r\n[company_phone]\r\n[company_mail]', '2024-07-22 04:11:18', '2024-07-25 18:45:56'),
 (3, '18th Birthday White Area', '[customer_first_name]\'s DJ Quote - 18th Birthday', 'Hi [customer_first_name], \r\nWe totally understand how important your 18th Birthday is and I can assure you that our top quality service will match your expectations.\r\nOver the last 12 years we have been in business we have built a team of the absolute best DJs and take strict measures to ensure they are the best. Mark and Adam will always see DJs perform live before they bring them on board with us so we can 100% guarantee outstanding quality along with 100% reliability as all our DJs have worked for us for years.\r\nWe will provide a young and energetic DJ that can provide a club like experience with all your favourites. If its a mixture of both our DJs get the balance just right for both the 18 year olds and family members.\r\nYou will also be very surprised at our rates not only have we managed to source the best DJs but at very reasonable rates (based on 4.5 hours):\r\nOur gold level DJs are: £340 (Possible 10 to 20% off for a limited period only) These DJs are the absolute best in the industury and are the top 10% of DJs (on average 1 in 10 DJs we see get though to meet these high standards) they also use the highest standard of equipment. \r\nSilver level DJs: £270  Even at this lower cost, as mentioned our DJs have worked with us for years and tested on performance you can always be assured your DJ will be to a high standard, experienced, well equipped, friendly and professional which is a list of the few attributes we make sure all our DJs have. These DJs are in the top 20% in the industury (on average 1 in 5 DJs get through to meet these standards) \r\nBronze level DJs: £200 These DJ’s are still fantastic for the rate and are still great at getting a crowd on the dance floor, they tend to use slightly less equipment so are best suited for small venues and house parties. (We only have limited DJs at this rate)', '2024-07-25 18:21:33', '2024-07-25 18:21:33'),
 (4, '18th Birthday Blue Area', '[customer_first_name]\'s DJ Quote - 18th Birthday', 'Hi [customer_first_name], \r\nWe totally understand how important your 18th Birthday is and I can assure you that our top quality service will match your expectations.\r\nOver the last 12 years we have been in business we have built a team of the absolute best DJs and take strict measures to ensure they are the best. Mark and Adam  always see DJs perform live before we bring them on board with us so we can 100% guarantee outstanding quality along with 100% reliability as all our DJs have worked for us for years.\r\nCan I ask if your party is more for friends or a mixture of both friends and family?\r\nIf its more for friends we will provide a young and energetic DJ that can provide a club like experience with all your favourites. If its a mixture of both our DJs get the balance just right for both the 18 year olds and family members.\r\nYou will also be very surprised at our rates (based on 4.5 hours):\r\nOur gold level DJs are: £320 (£256 with 20% discount for a limited period only) These DJs are the absolute best in the industury and are the top 10% of DJs (on average 1 in 10 DJs we see get though to meet these high standards) they also use the highest standard of equipment. \r\nSilver level DJs:£240  Even at this lower cost, as mentioned our DJs have worked with us for years and tested on performance you can always be assured your DJ will be to a high standard, experienced, well equipped, friendly and professional which is a list of the few attributes we make sure all our DJs have. These DJs are in the top 20% in the industury (on average 1 in 5 DJs get through to meet these standards) \r\nBronze level DJs: £160 These DJ’s are still fantastic for the rate and are still great at getting a crowd on the dance floor, they tend to use slightly less equipment so are best suited for small venues and house parties. (We only have limited DJs at this rate)', '2024-07-25 18:22:13', '2024-07-25 18:22:13'),
-(5, 'white10 +', '[customer_first_name]\'s DJ Quote', 'Hi [customer_first_name], \r\nThank you showing an interest in our service, \r\nJust to let you know we go the extra mile to make sure our parties are the best around. Our DJs are fun, friendly and full of energy! They provide a 100% cool disco, they can simply play music, provide interaction and encouragement or can even include a combination of games and competitions that best suit the age of the kids. \r\nOver the last 12 years we have been in business we have built a team of the absolute best DJs and take strict measures to ensure they are the best. Mark and Adam will always see DJs perform live before they bring them on board with us so we can 100% guarantee outstanding quality along with reliability as all our DJs have worked for us for years.\r\nWhat also makes our DJs different from the rest is that they aren’t just DJs that play music alone they are entertainers and some are professional dancers too, the DJs that are professional dancers can demonstrate their awesome dance moves with the kids and play party games for non-stop fun! They also have all the latest music that all the kids like and you can also provide your child’s favourite songs for them to play on the day.\r\nFor a DJ booking (2 hours):\r\nOur silver level DJs are: £250 (£200 with 20% off for a limited period only) These DJs are the absolute best in the industury and are the top 10% of DJs (on average 1 in 10 DJs we see get though to meet these high standards) \r\nBronze level DJs: £180 These DJ’s are still great for the rate and will still provide party games and interaction. (We only have limited DJs at this rate) \r\nFridays and Saturdays after 5pm are peak times:\r\nGold level DJs: £300  (£240 with 20% off for a limited period only)\r\nDJs that aren’t part of our main team: £220', '2024-07-25 18:23:02', '2024-07-25 18:23:02');
+(5, 'white10 +', '[customer_first_name]\'s DJ Quote', 'Hi [customer_first_name], \r\nThank you showing an interest in our service, \r\nJust to let you know we go the extra mile to make sure our parties are the best around. Our DJs are fun, friendly and full of energy! They provide a 100% cool disco, they can simply play music, provide interaction and encouragement or can even include a combination of games and competitions that best suit the age of the kids. \r\nOver the last 12 years we have been in business we have built a team of the absolute best DJs and take strict measures to ensure they are the best. Mark and Adam will always see DJs perform live before they bring them on board with us so we can 100% guarantee outstanding quality along with reliability as all our DJs have worked for us for years.\r\nWhat also makes our DJs different from the rest is that they aren’t just DJs that play music alone they are entertainers and some are professional dancers too, the DJs that are professional dancers can demonstrate their awesome dance moves with the kids and play party games for non-stop fun! They also have all the latest music that all the kids like and you can also provide your child’s favourite songs for them to play on the day.\r\nFor a DJ booking (2 hours):\r\nOur silver level DJs are: £250 (£200 with 20% off for a limited period only) These DJs are the absolute best in the industury and are the top 10% of DJs (on average 1 in 10 DJs we see get though to meet these high standards) \r\nBronze level DJs: £180 These DJ’s are still great for the rate and will still provide party games and interaction. (We only have limited DJs at this rate) \r\nFridays and Saturdays after 5pm are peak times:\r\nGold level DJs: £300  (£240 with 20% off for a limited period only)\r\nDJs that aren’t part of our main team: £220', '2024-07-25 18:23:02', '2024-07-25 18:23:02'),
+(6, '2 weeks after followup wedding', '[customer_first_name]’s Wedding', 'Hi [customer_first_name],\r\n\r\nI hope you\'re doing well.\r\n\r\nI just wanted to see your thoughts on everything so far?\r\n\r\nWe are very excited to bring your evening to life!\r\n\r\nIf you have any questions or need further details, feel free to get in touch. \r\n\r\nI am here to help.', '2024-07-30 05:35:18', '2024-07-30 05:35:18'),
+(7, '4 weeks after enquiry wedding', 'Stunning lighting for your wedding.', 'Hi [customer_first_name],\r\n\r\nI hope you are having a nice day so far,\r\n\r\nJust to let you know we have some options to make your event truly spectacular.\r\n\r\nWe have a special offer on our effects lighting for the next two days so if you would like to include these let us know?', '2024-07-30 05:36:01', '2024-07-30 05:36:01'),
+(8, '360 photobooths 40% discount wedding', '360 photobooths 40% discount', 'Hi [customer_first_name], \r\n\r\nI hope you are having a fantastic day and party planning is going well,\r\n\r\nJust to let you know we are offering 40% discount for a limited time for our 360 photobooths.\r\n\r\nIf you are interested feel free to get in touch.\r\n\r\nYou can find a video here to see what a 360 photobooth is:\r\nhttps://drive.google.com/file/d/1BiSML1xQNDpYZyHMCnRO1uk6_gZg06kd/view?usp=sharing', '2024-07-30 05:41:20', '2024-07-30 05:41:20'),
+(9, '50% off Up Lighting Wedding', '50% off Up Lighting', 'Hi [customer_first_name],\r\n\r\nHow is wedding planning going?\r\n\r\nWe are currently offering 50% discount on our up lighting for the next two days, if you would like up lighting for your wedding feel free to let me know?\r\n\r\nYou can find a up lighting demo video it takes a little bit of time on this video to see the before and after to see the effect but its well worth the wait.\r\n\r\nhttps://streamable.com/g9d3s\r\n\r\nOur up lighting is subject to availability.', '2024-07-30 05:42:02', '2024-07-30 05:42:02'),
+(10, '2 weeks after follow up other events', '[customer_first_name]’s Party', 'Hi [customer_first_name],\r\n\r\nI hope you\'re doing well.\r\n\r\nI just wanted to see your thoughts on everything so far?\r\n\r\nWe are very excited to bring your evening to life!\r\n\r\nIf you have any questions or need further details, feel free to get in touch. \r\n\r\nI am here to help.', '2024-07-30 07:35:46', '2024-07-30 07:39:20'),
+(11, '4 weeks after enquiry other events', 'Transform your venue with out effects lighting', 'Hi [customer_first_name],\r\n\r\nI hope you are having a nice day so far,\r\n\r\nJust to let you know we have some options to make your event truly spectacular.\r\n\r\nWe have a special offer on our effects lighting for the next two days so if you would like to include these let us know?', '2024-07-30 07:36:23', '2024-07-30 07:36:23'),
+(12, '360 photobooths 40% discount other events', '360 photobooths 40% discount', 'Hi [customer_first_name], \r\n\r\nI hope you are having a fantastic day and party planning is going well,\r\n\r\nJust to let you know we are offering 40% discount for a limited time for our 360 photobooths.\r\n\r\nIf you are interested feel free to get in touch.\r\n\r\nYou can find a video here to see what a 360 photobooth is:\r\nhttps://drive.google.com/file/d/1BiSML1xQNDpYZyHMCnRO1uk6_gZg06kd/view?usp=sharing', '2024-07-30 07:37:24', '2024-07-30 07:37:24'),
+(13, '50% off Up Lighting Other Events', '50% off Up Lighting', 'Hi [customer_first_name],\r\n\r\nHow is party planning going?\r\n\r\nWe are currently offering 50% discount on our up lighting for the next two days, if you would like up lighting for your wedding feel free to let me know?\r\n\r\nYou can find a up lighting demo video it takes a little bit of time on this video to see the before and after to see the effect but its well worth the wait.\r\n\r\nhttps://streamable.com/g9d3s\r\n\r\nOur up lighting is subject to availability.', '2024-07-30 07:38:05', '2024-07-30 08:03:07');
 
 -- --------------------------------------------------------
 
@@ -374,7 +390,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -393,7 +409,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (10, '2024_07_14_184148_create_follow_up_mails_table', 1),
 (11, '2024_07_14_184317_create_mail_campaigns_table', 1),
 (12, '2024_07_14_194123_create_mail_templates_table', 1),
-(13, '2024_07_26_001616_add_subject_to_mail_templates_table', 2);
+(13, '2024_07_26_001616_add_subject_to_mail_templates_table', 2),
+(14, '2024_07_29_174508_add_event_type_in_follow_up_mails', 3);
 
 -- --------------------------------------------------------
 
@@ -459,7 +476,7 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('lo6yDatropDHXFPvC3s2EBnvsbFwZX0a1emgdV2f', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiM3B1ZlFIamNmRE5XZUFHVmVlTzRNT3FTbWx4UGZ2bzlTRWc0dnNHWCI7czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjk6Il9wcmV2aW91cyI7YToxOntzOjM6InVybCI7czo0NDoiaHR0cDovLzEyNy4wLjAuMTo4MDAwL2FkbWluL3F1b3RlbWFpbC9lZGl0LzIiO319', 1721971136);
+('DOFr7oYqvk8X6ZmTGZvR8r2daTv8OOU0RnGUnQn0', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiV01lWEZPc3NpZGJ4Z0s0elZtSkp6aElQTE1JOFNOUHZWMVJXNWZmVSI7czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjk6Il9wcmV2aW91cyI7YToxOntzOjM6InVybCI7czo0NDoiaHR0cDovLzEyNy4wLjAuMTo4MDAwL2FkbWluL2ZvbGxvd3VwbWFpbC9hZGQiO319', 1722348364);
 
 -- --------------------------------------------------------
 

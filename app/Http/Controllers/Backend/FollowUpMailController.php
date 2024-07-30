@@ -20,6 +20,8 @@ class FollowUpMailController extends Controller
         $followupmail->title = $request->title;
         $followupmail->time_gap = $request->time_gap;
         $followupmail->mail_template_id = $request->mail_template_id;
+        $followupmail->event_type = $request->event_type;
+        
         $followupmail->save();
         Session::flash('message', 'Follow Up Mail Added.'); 
         return back();
@@ -27,17 +29,20 @@ class FollowUpMailController extends Controller
     }
     function edit($id) {
         $item = FollowUpMail::findOrFail($id);
-        return view('backend.followupmail.edit', compact('item'));
+        $templates = MailTemplate::orderBy('name', 'asc')->get();
+        return view('backend.followupmail.edit', compact('item', 'templates'));
         
         
     }
     function update(Request $request,$id) {
         $followupmail = FollowUpMail::findOrFail($id);
         if($followupmail) {
-        $followupmail->title = $request->title;
-        $followupmail->time_gap = $request->time_gap;
-        $followupmail->mail_template_id = $request->mail_template_id;
-        $followupmail->save();
+            $followupmail->title = $request->title;
+            $followupmail->time_gap = $request->time_gap;
+            $followupmail->mail_template_id = $request->mail_template_id;
+            $followupmail->event_type = $request->event_type;
+            
+            $followupmail->save();
         }
         Session::flash('message', 'Follow Up Mail Updated.'); 
         return back();
