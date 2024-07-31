@@ -42,4 +42,13 @@ class MailTemplateController extends Controller
         
         
     }
+
+    function delete($id) {
+        $mailtemplate = MailTemplate::findOrFail($id);
+        if($mailtemplate) {
+        $mailtemplate->delete();
+        }
+        Session::flash('message', 'Deleted.');
+        return back();
+    }
 }

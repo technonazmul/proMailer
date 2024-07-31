@@ -49,4 +49,13 @@ class FollowUpMailController extends Controller
         
         
     }
+
+    function delete($id) {
+        $followupmail = FollowUpMail::findOrFail($id);
+        if($followupmail) {
+        $followupmail->delete();
+        Session::flash('message', 'Deleted.');
+        }
+        return back();
+    }
 }
