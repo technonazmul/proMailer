@@ -97,6 +97,10 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
         Route::post('/update/{id}', [App\Http\Controllers\Backend\FollowUpMailController::class, 'update'])->name('followupmail.update');
         Route::get('/delete/{id}', [App\Http\Controllers\Backend\FollowUpMailController::class, 'delete'])->name('followupmail.delete');
     });
+    Route::prefix('sendmail')->group(function () {
+        Route::get('/followupmail', [App\Http\Controllers\Backend\MailSendController::class, 'followupmail'])->name('sendmail.followupmail');
+
+    });
 
 
 

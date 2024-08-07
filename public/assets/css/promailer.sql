@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Aug 07, 2024 at 03:05 PM
--- Server version: 8.2.0
--- PHP Version: 8.2.13
+-- Generation Time: Aug 07, 2024 at 07:52 PM
+-- Server version: 8.0.31
+-- PHP Version: 8.0.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -81,7 +81,7 @@ CREATE TABLE IF NOT EXISTS `companies` (
 --
 
 INSERT INTO `companies` (`id`, `name`, `company_id`, `phone`, `email`, `domain`, `address`, `mail_sender_name`, `smtp_username`, `smtp_port`, `smtp_host`, `smtp_password`, `category_id`, `user_id`, `created_at`, `updated_at`) VALUES
-(2, 'Surrey DJ', 'surrey_dj', '+44 1483 362031', 'office@surreydj.co.uk', 'surreydj.co.uk', NULL, 'Sandy Walton', 'office@surreydj.co.uk', '465', 'mail.surreydj.co.uk', 'Opm8akZ2hyjV2$gsL4!wYae3Gdgov9xt', '1', NULL, '2024-06-28 12:05:02', '2024-06-29 07:55:56'),
+(2, 'Surrey DJ', 'surrey_dj', '+44 1483 362031', 'office@surreydj.co.uk', 'surreydj.co.uk', NULL, 'Sandy Walton', 'office@surreydj.co.uk', '465', 'mail.surreydj.co.uk', 'Surr3y%ShuvoShuvo1%', '1', NULL, '2024-06-28 12:05:02', '2024-08-07 13:46:56'),
 (3, 'Bespoke Wedding DJs - Gloucestershire', 'bespoke_wedding_djs_gloucestershire', '+44 1452 687520', 'office@bespokeweddingdjs.co.uk', 'www.bespokeweddingdjs.co.uk', NULL, 'Sandy Walton', 'office@bespokeweddingdjs.co.uk', '25', 'mail.bespokeweddingdjs.co.uk', 'Surr3y%ShuvoShuvo1%', '1', NULL, '2024-07-06 23:08:24', '2024-07-06 23:08:24'),
 (4, 'Buckinghamshire Wedding DJs', 'buckinghamshire_wedding_djs', '+441296847044', 'office@buckinghamshireweddingdjs.co.uk', 'buckinghamshireweddingdjs.co.uk', NULL, 'Sandy Walton', 'office@buckinghamshireweddingdjs.co.uk', '25', 'mail.buckinghamshireweddingdjs.co.uk', 'Surr3y%ShuvoShuvo1%', '1', NULL, '2024-07-07 00:45:34', '2024-07-07 00:45:34'),
 (5, 'Buckinghamshire DJs', 'buckinghamshire_djs', '+441296847044', 'office@buckinghamshiredjs.uk', 'buckinghamshiredjs.uk', NULL, 'Sandy Walton', 'office@buckinghamshiredjs.uk', '25', 'mail.buckinghamshiredjs.uk', 'Surr3y%ShuvoShuvo1%', '1', NULL, '2024-07-07 00:47:16', '2024-07-07 00:47:16'),
@@ -284,12 +284,12 @@ CREATE TABLE IF NOT EXISTS `follow_up_mails` (
 INSERT INTO `follow_up_mails` (`id`, `title`, `time_gap`, `event_type`, `mail_template_id`, `created_at`, `updated_at`) VALUES
 (1, '2 weeks after enquiry for wedding event', '14', 'wedding', '6', '2024-07-30 07:40:03', '2024-07-30 08:05:58'),
 (2, '4 weeks after enquiry wedding event', '28', 'wedding', '7', '2024-07-30 21:42:04', '2024-07-30 21:42:04'),
-(3, '360 photobooths 40% discount wedding event', '35', 'wedding', '8', '2024-07-30 21:42:40', '2024-07-30 21:42:40'),
-(4, '50% off Up Lighting Wedding event', '42', 'wedding', '9', '2024-07-30 21:48:34', '2024-07-30 21:48:34'),
+(3, '360 photobooths 40% discount wedding event', '42', 'wedding', '8', '2024-07-30 21:42:40', '2024-08-07 12:41:34'),
+(4, '50% off Up Lighting Wedding event', '56', 'wedding', '9', '2024-07-30 21:48:34', '2024-08-07 12:42:10'),
 (5, '2 weeks after followup other event', '14', 'other', '10', '2024-07-30 21:50:52', '2024-07-30 21:50:52'),
 (6, '4 weeks after enquiry other event', '28', 'other', '11', '2024-07-30 21:54:41', '2024-07-30 21:54:41'),
-(7, '360 photobooths 40% discount other event', '35', 'other', '12', '2024-07-30 21:55:03', '2024-07-30 21:55:03'),
-(8, '50% off Up Lighting other event', '42', 'other', '13', '2024-07-30 21:55:46', '2024-07-30 21:55:46');
+(7, '360 photobooths 40% discount other event', '42', 'other', '12', '2024-07-30 21:55:03', '2024-08-07 12:41:29'),
+(8, '50% off Up Lighting other event', '56', 'other', '13', '2024-07-30 21:55:46', '2024-08-07 12:42:07');
 
 -- --------------------------------------------------------
 
@@ -485,7 +485,8 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
 ('DOFr7oYqvk8X6ZmTGZvR8r2daTv8OOU0RnGUnQn0', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiV01lWEZPc3NpZGJ4Z0s0elZtSkp6aElQTE1JOFNOUHZWMVJXNWZmVSI7czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjk6Il9wcmV2aW91cyI7YToxOntzOjM6InVybCI7czo0NDoiaHR0cDovLzEyNy4wLjAuMTo4MDAwL2FkbWluL2ZvbGxvd3VwbWFpbC9hZGQiO319', 1722348364),
 ('Pd5Ucbh4Jmaq8vac9kprTvOVvVKJivQvXMZ2iMu7', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoicjFYUUN3QlhqWk4xZ3JWYVJqOGpRdUxZTVgzVG9nYm1MVExjWUNmMyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDQ6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9mb2xsb3d1cG1haWwvYWRkIjt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjQ6ImF1dGgiO2E6MTp7czoyMToicGFzc3dvcmRfY29uZmlybWVkX2F0IjtpOjE3MjIzOTY3NjQ7fX0=', 1722398146),
-('qa7SqvWsxjYB5wqu7G423irGdYoclbXXqRmWAE5Z', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiaGIwMVRPc2o0bGY5OTltU2lNVFVjT1hYT3NxeXVQQWZBczRUSWR3diI7czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjk6Il9wcmV2aW91cyI7YToxOntzOjM6InVybCI7czozODoiaHR0cDovLzEyNy4wLjAuMTo4MDAwL2FkbWluL2RhdGEvaW5kZXgiO319', 1722428813);
+('qa7SqvWsxjYB5wqu7G423irGdYoclbXXqRmWAE5Z', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiaGIwMVRPc2o0bGY5OTltU2lNVFVjT1hYT3NxeXVQQWZBczRUSWR3diI7czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjk6Il9wcmV2aW91cyI7YToxOntzOjM6InVybCI7czozODoiaHR0cDovLzEyNy4wLjAuMTo4MDAwL2FkbWluL2RhdGEvaW5kZXgiO319', 1722428813),
+('zEb9yzyRGnAjtpEUe5YpblHQVGt23eTwnOwIpRk0', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoidzA3THkyZTVhSldSdHZLSEl1RXVzNXlWQTlJN2tZVGJEVDJTN0lLaCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDk6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9zZW5kbWFpbC9mb2xsb3d1cG1haWwiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6NDoiYXV0aCI7YToxOntzOjIxOiJwYXNzd29yZF9jb25maXJtZWRfYXQiO2k6MTcyMzA1NTA1MDt9fQ==', 1723060117);
 
 -- --------------------------------------------------------
 
