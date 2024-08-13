@@ -26,9 +26,26 @@ class MailSendController extends Controller
 
         foreach($datas as $data) {
             foreach ($followupmails as $followup) {
+
                 $dataCreatedAt = $data->created_at;
                 $daysDifference = $dataCreatedAt->diffInDays(Carbon::now());
-                echo intval($daysDifference)+1;
+                $daydifference = intval($daysDifference+1);
+               
+                if($daydifference < $followup->time_gap) {
+                    break;
+                }elseif($daydifference == $followup->time_gap) {
+                    if (strtolower($data->event_type) == "wedding" && $followup->event_type == "wedding") {
+                        echo "I got you wedding"."<br>".$followup."<br>";
+                        echo $data."<br>";
+
+                    }else {
+                        
+                    }   
+                   
+                }else {
+                    continue;
+                }
+                
             }
         }
 
