@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
+use Carbon\Carbon;
 
 
 class MailSendController extends Controller
@@ -20,7 +21,54 @@ class MailSendController extends Controller
 
     function followupmail()
     {
-        //$followupmails = Data::where('status', '!=', '0')->get();
+        $datas = Data::where('status', '!=', '0')->get();
+        $followupmails = FollowUpMail::orderBy('time_gap', 'asc')->get();
+
+        foreach($datas as $data) {
+            foreach ($followupmails as $followup) {
+                $dataCreatedAt = $data->created_at;
+                $daysDifference = $dataCreatedAt->diffInDays(Carbon::now());
+                echo intval($daysDifference)+1;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /*
+
+
         $mail = new PHPMailer(true);
 
         try {
@@ -62,5 +110,6 @@ class MailSendController extends Controller
         } catch (Exception $e) {
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }
+        */
     }
 }
