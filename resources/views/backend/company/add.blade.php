@@ -61,6 +61,15 @@
                   <input type="text" class="form-control" id="address" name="address" placeholder="Company Address">
               </div>
               <div class="mb-3">
+                <label for="videos" class="form-label">Videos Link </label>
+                <input type="text" class="form-control" id="videos" name="videos" placeholder="Review Videos Link">
+              </div>
+              <div class="mb-3">
+                <label for="review_videos" class="form-label">Review Videos Link</label>
+                <input type="text" class="form-control" id="review_videos" name="review_videos" placeholder="Videos Link">
+              </div>
+            
+              <div class="mb-3">
                 <label for="mail_sender_name" class="form-label">Mail Sender Full Name</label>
                 <input type="text" class="form-control" id="mail_sender_name" name="mail_sender_name" value="Sandy Walton">
             </div>

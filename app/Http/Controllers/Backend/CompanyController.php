@@ -40,6 +40,8 @@ class CompanyController extends Controller
         $company->email = $request->email;
         $company->domain = $request->domain;
         $company->address = $request->address;
+        $company->review_videos = $request->review_videos;
+        $company->videos = $request->videos;
         $company->mail_sender_name = $request->mail_sender_name;
         $company->smtp_username = $request->smtp_username;
         $company->smtp_port = $request->smtp_port;
@@ -84,6 +86,8 @@ class CompanyController extends Controller
             $company->email = $request->email;
             $company->domain = $request->domain;
             $company->address = $request->address;
+            $company->review_videos = $request->review_videos;
+            $company->videos = $request->videos;
             $company->mail_sender_name = $request->mail_sender_name;
             $company->smtp_username = $request->smtp_username;
             $company->smtp_port = $request->smtp_port;
