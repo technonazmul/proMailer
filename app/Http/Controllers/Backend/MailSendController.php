@@ -39,6 +39,7 @@ class MailSendController extends Controller
                         if (strtolower($data->event->name) == "wedding" && $followup->event_type == "wedding") {
 
                             $this->sendMail($data, $followup);
+                            
 
                         } else {
 
@@ -112,6 +113,8 @@ class MailSendController extends Controller
 
             //Content
             $mail->isHTML(true);                                  //Set email format to HTML
+            $mail->CharSet = 'UTF-8';                       // Use UTF-8 encoding
+            $mail->Encoding = 'base64';
             $mail->Subject = $subject;
             $mail->Body = $finalEmail;
             $mail->AltBody = $finalEmail;
