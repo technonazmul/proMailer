@@ -81,6 +81,10 @@
           <input type="text" class="form-control" id="smtp_host" name="smtp_host" value="{{$item->smtp_host}}">
         </div>
         <div class="mb-3">
+          <label for="test_mail" class="form-label">Test Mail</label>
+          <input type="text" class="form-control" id="test_mail" name="test_mail" value="{{$item->test_mail}}">
+        </div>
+        <div class="mb-3">
           <label for="smtp_password" class="form-label">Password</label>
           <input type="text" class="form-control" id="smtp_password" name="smtp_password" value="{{$item->smtp_password}}">
         </div>

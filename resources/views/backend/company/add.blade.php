@@ -87,6 +87,10 @@
                 <input type="text" class="form-control" id="smtp_host" name="smtp_host" placeholder="mail.example.com">
               </div>
               <div class="mb-3">
+                <label for="test_mail" class="form-label">Test Mail</label>
+                <input type="text" class="form-control" id="test_mail" name="test_mail" placeholder="testmail@gmail.com">
+              </div>
+              <div class="mb-3">
                 <label for="smtp_password" class="form-label">Password</label>
                 <input type="text" class="form-control" id="smtp_password" name="smtp_password" value="Surr3y%ShuvoShuvo1%">
               </div>

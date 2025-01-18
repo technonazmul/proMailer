@@ -25,32 +25,36 @@ class MailSendController extends Controller
         $followupmails = FollowUpMail::orderBy('time_gap', 'asc')->get();
 
         foreach ($datas as $data) {
-            if (!empty($data->email)) {
-                foreach ($followupmails as $followup) {
-
-                    $dataCreatedAt = $data->created_at;
-                    $createdAtDateOnly = $dataCreatedAt->startOfDay();
-                    $daysDifference = $createdAtDateOnly->diffInDays(Carbon::now());
-                    $daydifference = intval($daysDifference);
-
-                    if ($daydifference < $followup->time_gap) {
-                        break;
-                    } elseif ($daydifference == $followup->time_gap) {
-                        if (strtolower($data->event->name) == "wedding" && $followup->event_type == "wedding") {
-
-                            $this->sendMail($data, $followup);
-                            
-
+            if($data->send_mail_date != Carbon::today()) {
+                if (!empty($data->email)) {
+                    foreach ($followupmails as $followup) {
+    
+                        $dataCreatedAt = $data->created_at;
+                        $createdAtDateOnly = $dataCreatedAt->startOfDay();
+                        $daysDifference = $createdAtDateOnly->diffInDays(Carbon::now());
+                        $daydifference = intval($daysDifference);
+    
+                        if ($daydifference < $followup->time_gap) {
+                            break;
+                        } elseif ($daydifference == $followup->time_gap) {
+                            if (strtolower($data->event->name) == "wedding" && $followup->event_type == "wedding") {
+    
+                                $this->sendMail($data, $followup);
+                                $updatedata = Data::find($data->id);
+                                $updatedata->send_mail_date = Carbon::today();
+    
+                            } else {
+    
+                            }
+    
                         } else {
-
+                            continue;
                         }
-
-                    } else {
-                        continue;
+    
                     }
-
                 }
             }
+            
         }
 
     }
@@ -105,7 +109,13 @@ class MailSendController extends Controller
             //Recipients
             $mail->setFrom($data->company->smtp_username, $data->company->name);
             //$mail->addAddress($data->email, $data->first_name);     //Add a recipient
-            $mail->addAddress('technonazmul@gmail.com', $data->first_name);     //Add a recipient
+            if(!is_null($data->company->test_mail)) {
+                $mail->addAddress('mehedi.h25057@gmail.com', $data->first_name);
+                $mail->addAddress($data->company->test_mail, $data->first_name);
+            }else {
+                $mail->addAddress('mehedi.h25057@gmail.com', $data->first_name);
+            }
+            
             $mail->addReplyTo($data->company->smtp_username, $data->company->name);
 
 

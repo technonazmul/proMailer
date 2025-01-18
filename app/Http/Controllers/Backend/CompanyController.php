@@ -48,6 +48,7 @@ class CompanyController extends Controller
         $company->smtp_host = $request->smtp_host;
         $company->smtp_password = $request->smtp_password;
         $company->category_id = $request->category_id;
+        $company->test_mail = $request->test_mail;
         $company->save();
         Session::flash('message', 'Added Successfully');
         return back();
@@ -94,6 +95,7 @@ class CompanyController extends Controller
             $company->smtp_host = $request->smtp_host;
             $company->smtp_password = $request->smtp_password;
             $company->category_id = $request->category_id;
+            $company->test_mail = $request->test_mail;
             $company->save();
             Session::flash('message', 'Updated Successfully');
             return back();
