@@ -25,38 +25,30 @@ class MailSendController extends Controller
         $followupmails = FollowUpMail::orderBy('time_gap', 'asc')->get();
 
         foreach ($datas as $data) {
-            if($data->send_mail_date != Carbon::today()) {
+            // Use Carbon's isSameDay for date comparison
+            if (!$data->send_mail_date || !Carbon::parse($data->send_mail_date)->isSameDay(Carbon::today())) {
                 if (!empty($data->email)) {
                     foreach ($followupmails as $followup) {
-    
-                        $dataCreatedAt = $data->created_at;
-                        $createdAtDateOnly = $dataCreatedAt->startOfDay();
-                        $daysDifference = $createdAtDateOnly->diffInDays(Carbon::now());
-                        $daydifference = intval($daysDifference);
-    
-                        if ($daydifference < $followup->time_gap) {
-                            break;
-                        } elseif ($daydifference == $followup->time_gap) {
+                        $dataCreatedAt = $data->created_at->startOfDay();
+                        $daysDifference = $dataCreatedAt->diffInDays(Carbon::today());
+
+                        if ($daysDifference < $followup->time_gap) {
+                            break; // Stop if the gap is not reached yet
+                        } elseif ($daysDifference == $followup->time_gap) {
                             if (strtolower($data->event->name) == "wedding" && $followup->event_type == "wedding") {
-    
                                 $this->sendMail($data, $followup);
-                                $updatedata = Data::find($data->id);
-                                $updatedata->send_mail_date = Carbon::today();
-    
-                            } else {
-    
+
+                                // Update send_mail_date and save
+                                $data->send_mail_date = Carbon::today();
+                                $data->save();
                             }
-    
                         } else {
-                            continue;
+                            continue; // Continue to the next follow-up if time_gap exceeded
                         }
-    
                     }
                 }
             }
-            
         }
-
     }
 
     public function sendMail($data, $followup)
