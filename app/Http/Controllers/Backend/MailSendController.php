@@ -10,6 +10,8 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 
 class MailSendController extends Controller
@@ -20,36 +22,49 @@ class MailSendController extends Controller
     }
 
     function followupmail()
-    {
-        $datas = Data::where('status', '!=', '0')->get();
-        $followupmails = FollowUpMail::orderBy('time_gap', 'asc')->get();
+{
+    // Query to filter data where emails haven't been sent today
+    $datas = Data::where('status', '!=', '0')
+        ->where(function ($query) {
+            $query->whereNull('send_mail_date')
+                  ->orWhereDate('send_mail_date', '!=', Carbon::today());
+        })->get();
 
-        foreach ($datas as $data) {
-            // Use Carbon's isSameDay for date comparison
-            if (!$data->send_mail_date || !Carbon::parse($data->send_mail_date)->isSameDay(Carbon::today())) {
-                if (!empty($data->email)) {
-                    foreach ($followupmails as $followup) {
-                        $dataCreatedAt = $data->created_at->startOfDay();
-                        $daysDifference = $dataCreatedAt->diffInDays(Carbon::today());
+    $followupmails = FollowUpMail::orderBy('time_gap', 'asc')->get();
 
-                        if ($daysDifference < $followup->time_gap) {
-                            break; // Stop if the gap is not reached yet
-                        } elseif ($daysDifference == $followup->time_gap) {
-                            if (strtolower($data->event->name) == "wedding" && $followup->event_type == "wedding") {
-                                $this->sendMail($data, $followup);
+    foreach ($datas as $data) {
+        DB::beginTransaction(); // Start transaction
 
-                                // Update send_mail_date and save
-                                $data->send_mail_date = Carbon::today();
-                                $data->save();
-                            }
-                        } else {
-                            continue; // Continue to the next follow-up if time_gap exceeded
+        try {
+            if (!empty($data->email)) {
+                foreach ($followupmails as $followup) {
+                    $dataCreatedAt = $data->created_at->startOfDay();
+                    $daysDifference = $dataCreatedAt->diffInDays(Carbon::today());
+
+                    if ($daysDifference < $followup->time_gap) {
+                        break; // Stop if the gap is not reached yet
+                    } elseif ($daysDifference == $followup->time_gap) {
+                        if (strtolower($data->event->name) == "wedding" && $followup->event_type == "wedding") {
+                            $this->sendMail($data, $followup);
+
+                            // Update send_mail_date immediately
+                            $data->send_mail_date = Carbon::today();
+                            $data->save();
+
+                            break; // Stop further checks for this data record
                         }
                     }
                 }
             }
+
+            DB::commit(); // Commit the transaction
+        } catch (\Exception $e) {
+            DB::rollBack(); // Rollback on error
+            // Optionally log the exception
+            Log::error("Error sending follow-up mail: " . $e->getMessage());
         }
     }
+}
 
     public function sendMail($data, $followup)
     {
