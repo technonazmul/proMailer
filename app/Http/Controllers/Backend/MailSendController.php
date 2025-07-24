@@ -22,49 +22,92 @@ class MailSendController extends Controller
     }
 
     function followupmail()
-{
-    // Query to filter data where emails haven't been sent today
-    $datas = Data::where('status', '!=', '0')
-        ->where(function ($query) {
-            $query->whereNull('send_mail_date')
-                  ->orWhereDate('send_mail_date', '!=', Carbon::today());
-        })->get();
+    {
+        echo now();
 
-    $followupmails = FollowUpMail::orderBy('time_gap', 'asc')->get();
+        // Query to filter data where emails haven't been sent today
+        $datas = Data::where('status', '!=', '0')
+            ->where(function ($query) {
+                $query->whereNull('send_mail_date')
+                    ->orWhereDate('send_mail_date', '!=', Carbon::today());
+            })->get();
 
-    foreach ($datas as $data) {
-        DB::beginTransaction(); // Start transaction
+        $followupmails = FollowUpMail::orderBy('time_gap', 'asc')->get();
 
-        try {
-            if (!empty($data->email)) {
-                foreach ($followupmails as $followup) {
-                    $dataCreatedAt = $data->created_at->startOfDay();
-                    $daysDifference = $dataCreatedAt->diffInDays(Carbon::today());
+        foreach ($datas as $data) {
+            DB::beginTransaction(); // Start transaction
+            echo "Processing data for: " . $data->email . "<br>";
 
-                    if ($daysDifference < $followup->time_gap) {
-                        break; // Stop if the gap is not reached yet
-                    } elseif ($daysDifference == $followup->time_gap) {
+            try {
+                if (!empty($data->email)) {
+                    foreach ($followupmails as $followup) {
+                        $currentFollowUps = $data->follow_up_send_ids ? explode(',', $data->follow_up_send_ids) : [];
+                        if (!in_array($followup->id, $currentFollowUps)) {
+                                $currentFollowUps[] = $followup->id;
+                                
+                        }else {
+                            continue; // Skip if already exists
+                        }
+                        $dataCreatedAt = $data->created_at->startOfDay();
+                        $daysDifference = $dataCreatedAt->diffInDays(Carbon::today());
+                        echo "Days difference: " . $daysDifference . "<br>";
+                        if ($daysDifference < $followup->time_gap) {
+                            echo "Skipping, not enough days passed.<br>";
+                            break; // Stop if the gap is not reached yet
+                        } elseif ($daysDifference == $followup->time_gap) {
+                            echo "Sending mail for follow-up: " . $followup->event_type . "<br>";
+
+                        
+
                         if (strtolower($data->event->name) == "wedding" && $followup->event_type == "wedding") {
-                            $this->sendMail($data, $followup);
+                            $mailSent = $this->sendMail($data, $followup);
 
-                            // Update send_mail_date immediately
-                            $data->send_mail_date = Carbon::today();
-                            $data->save();
+                            if ($mailSent) {
+                                $data->send_mail_date = Carbon::today();
+                                
+                                $data->follow_up_send_ids = implode(',', $currentFollowUps);
+                                echo 'current follo up'.$currentFollowUps;
+
+                                $data->save();
+
+                                echo "Mail sent successfully, follow-up ID {$followup->id} recorded in follow_up_send_ids.<br>";
+                            } else {
+                                echo "Mail sending failed, follow-up ID {$followup->id} NOT recorded.<br>";
+                            }
+
+                            break; // Stop further checks for this data record
+                        } else {
+                            $mailSent = $this->sendMail($data, $followup);
+
+                            if ($mailSent) {
+                                $data->send_mail_date = Carbon::today();
+
+                                
+                                $data->follow_up_send_ids = implode(',', $currentFollowUps);
+                                
+                                $data->save();
+
+                                echo "Mail sent successfully, follow-up ID {$followup->id} recorded in follow_up_send_ids.<br>";
+                            } else {
+                                echo "Mail sending failed, follow-up ID {$followup->id} NOT recorded.<br>";
+                            }
 
                             break; // Stop further checks for this data record
                         }
+
+
+                        }
                     }
                 }
-            }
 
-            DB::commit(); // Commit the transaction
-        } catch (\Exception $e) {
-            DB::rollBack(); // Rollback on error
-            // Optionally log the exception
-            Log::error("Error sending follow-up mail: " . $e->getMessage());
+                DB::commit(); // Commit the transaction
+            } catch (\Exception $e) {
+                DB::rollBack(); // Rollback on error
+                // Optionally log the exception
+                Log::error("Error sending follow-up mail: " . $e->getMessage());
+            }
         }
     }
-}
 
     public function sendMail($data, $followup)
     {
@@ -116,12 +159,7 @@ class MailSendController extends Controller
             //Recipients
             $mail->setFrom($data->company->smtp_username, $data->company->name);
             //$mail->addAddress($data->email, $data->first_name);     //Add a recipient
-            if(!is_null($data->company->test_mail)) {
-                $mail->addAddress('mehedi.h25057@gmail.com', $data->first_name);
-                $mail->addAddress($data->company->test_mail, $data->first_name);
-            }else {
-                $mail->addAddress('mehedi.h25057@gmail.com', $data->first_name);
-            }
+            $mail->addAddress('mehedi.h25057@gmail.com', $data->first_name);
             
             $mail->addReplyTo($data->company->smtp_username, $data->company->name);
 
@@ -135,11 +173,14 @@ class MailSendController extends Controller
             $mail->Subject = $subject;
             $mail->Body = $finalEmail;
             $mail->AltBody = $finalEmail;
-
+            
             $mail->send();
-            echo 'Message has been sent';
+
+            return true;
+
         } catch (Exception $e) {
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+            return false;
         }
 
 

@@ -99,6 +99,7 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     });
     Route::prefix('sendmail')->group(function () {
         Route::get('/followupmail', [App\Http\Controllers\Backend\MailSendController::class, 'followupmail'])->name('sendmail.followupmail');
+        //Route::get('/testfollowupmail', [App\Http\Controllers\Backend\TestMailSendController::class, 'followupmail'])->name('sendmail.testmail');
 
     });
 
