@@ -27,10 +27,13 @@ class MailSendController extends Controller
 
         // Query to filter data where emails haven't been sent today
         $datas = Data::where('status', '!=', '0')
-            ->where(function ($query) {
-                $query->whereNull('send_mail_date')
-                    ->orWhereDate('send_mail_date', '!=', Carbon::today());
-            })->get();
+        ->where(function ($query) {
+            $query->whereNull('send_mail_date')
+                ->orWhereDate('send_mail_date', '!=', Carbon::today());
+        })
+        ->whereDate(DB::raw("STR_TO_DATE(event_date, '%d/%m/%Y')"), '>', Carbon::today())
+        ->get();
+
 
         $followupmails = FollowUpMail::orderBy('time_gap', 'asc')->get();
 
